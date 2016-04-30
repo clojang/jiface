@@ -76,7 +76,7 @@ Mid-level API docs:
 
 Using jiface in a project is just like any other Clojure library. Just add the following to the ``:dependencies`` in your ``project.clj`` file:
 
-![Clojars Project](http://clojars.org/jiface/latest-version.svg)
+[![Clojars Project](https://img.shields.io/clojars/v/clojang/jiface.svg)](https://clojars.org/clojang/jiface)
 
 For the Erlang/LFE side of things, you just need to add the Github URL to your ``rebar.config`` file, as with any other rebar-based Erlang VM project.
 

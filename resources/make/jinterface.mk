@@ -16,7 +16,7 @@ build-jinterface: clean-jinterface-build
 	mkdir -p $(JINTERFACE_BUILD)/src
 	cp -r $(ERL_LIBS)/lib/jinterface-$(JINTERFACE_VER)/java_src \
 	 $(JINTERFACE_BUILD)/src/java
-	cat ./resources/project.clj.tmpl | \
+	cat ./resources/jinterface/project.clj.tmpl | \
 	sed 's/{{VERSION}}/$(JINTERFACE_VER)/g' > \
 	$(JINTERFACE_BUILD)/project.clj
 	cd $(JINTERFACE_BUILD) && lein jar

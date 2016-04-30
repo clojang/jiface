@@ -1,23 +1,11 @@
 check:
-	@lein test :unit
-
-check-system:
-	@lein test :system
-
-check-integration:
-	@lein test :integration
-
-check-all:
-	@lein test :all
-
-check-compiled:
 	@lein with-profile +testing test :unit
 
-check-compiled-system:
+check-system:
 	@lein with-profile +testing test :system
 
-check-compiled-integration:
+check-integration:
 	@lein with-profile +testing test :integration
 
-check-compiled-all:
+check-all:
 	@lein with-profile +testing test :all

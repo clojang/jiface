@@ -7,7 +7,7 @@
 
 *Erlang's JInterface in Idiomatic Clojure*
 
-![Clojars Project](http://clojars.org/jiface/latest-version.svg)
+[![Clojars Project](https://img.shields.io/clojars/v/clojang/jiface.svg)](https://clojars.org/clojang/jiface)
 
 
 #### Contents

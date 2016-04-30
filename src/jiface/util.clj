@@ -67,28 +67,3 @@
       (fn [e & args]
         (println msg)
         (println (str {:args args :errors e}))))))
-
-(defn ->str-arg [arg]
-  (condp #(%1 %2) arg
-    keyword? (name arg)
-    symbol? (str arg)
-    arg))
-
-(defn ->str-args [args]
-  (reduce
-    (fn [acc x]
-      (into acc [x]))
-    []
-    (map ->str-arg args)))
-
-(defn defined?
-  [item]
-  (cond
-    empty? false
-    nil? false))
-
-(defn close-splash-screen
-  ""
-  []
-  (-> (java.awt.SplashScreen/getSplashScreen)
-      (.close)))

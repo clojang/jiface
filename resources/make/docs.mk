@@ -54,10 +54,10 @@ erl-docs:
 	$(CURRENT)
 	@patch \
 	$(CURRENT)/erlang/users_guide.html \
-	resources/erlang_users_guide.patch
+	resources/patches/erlang_users_guide.patch
 	@patch \
 	$(CURRENT)/erlang/jinterface_users_guide.html \
-	resources/jinterface_users_guide.patch
+	resources/patches/jinterface_users_guide.patch
 
 clojang-docs:
 	@lein codox

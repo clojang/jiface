@@ -80,9 +80,36 @@ Using jiface in a project is just like any other Clojure library. Just add the f
 
 For the Erlang/LFE side of things, you just need to add the Github URL to your ``rebar.config`` file, as with any other rebar-based Erlang VM project.
 
-As for actual code usage, the documentation section provides links to developer guides and API references, but below are also provided two quick examples, one each in the low- and mid-level APIs.
+As for actual code usage, the documentation section provides links to developer guides and API references, but below is quick example.
 
-```clojure
+Start LFE in distributed mode:
+
+```
+$ lfe -sname clojang-lfe
+Erlang/OTP 18 [erts-7.3] [source] [64-bit] [smp:4:4] [async-threads:10] ...
+
+   ..-~.~_~---..
+  (      \\     )    |   A Lisp-2+ on the Erlang VM
+  |`-.._/_\\_.-';    |   Type (help) for usage info.
+  |         g (_ \   |
+  |        n    | |  |   Docs: http://docs.lfe.io/
+  (       a    / /   |   Source: http://github.com/rvirding/lfe
+   \     l    (_/    |
+    \   r     /      |   LFE v0.11.0-dev (abort with ^G)
+     `-E___.-'
+
+(clojang-lfe@mndltl01)>
+```
+
+Then start up a jiface Clojure REPL:
+
+```
+$ lein repl
+```
+
+And paste the following:
+
+```clj
 (require '[jiface.otp.messaging :as messaging]
          '[jiface.otp.nodes :as nodes]
          '[jiface.erlang.types :as types]
@@ -96,19 +123,24 @@ As for actual code usage, the documentation section provides links to developer 
             (types/atom "hello, world")]))
 (messaging/! mbox "echo" "gurka" (types/tuple msg))
 (messaging/receive mbox)
+```
+
+When you paste the ``receive`` function, you'll get something like this:
+
+```clj
 #object[com.ericsson.otp.erlang.OtpErlangTuple
         0x4c9e3fa6
         "{#Pid<gurka@mndltl01.1.0>,'hello, world'}"]
 ```
 
-From LFE:
+In the LFE REPL, you can send a message to your new Clojure node:
 
 ```cl
 (lfe@mndltl01)> (! #(echo gurka@mndltl01) `#(,(self) hej!))
 #(<0.35.0> hej!)
 ```
 
-Then back in Clojure:
+Then back in Clojure, check the sent message and send a response:
 
 ```clojure
 (def data (messaging/receive mbox))
@@ -116,11 +148,12 @@ Then back in Clojure:
 (messaging/! mbox lfe-pid (types/tuple msg))
 ```
 
-Then, back in LFE:
+Then, back in LFE, flush the REPL's process mbox to see what has been sent to it:
 
 ```cl
 (lfe@mndltl01)> (c:flush)
 Shell got {<5926.1.0>,'hello, world'}
+ok
 ```
 
 

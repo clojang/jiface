@@ -10,7 +10,7 @@ ERL_DOCS_SRC = ~/Dropbox/Docs/Erlang
 ERL_DOCS_DIR = $(CURRENT)/erlang
 JAVA_DOCS_DIR = $(ERL_DOCS_DIR)/java
 DOCS_GIT_HACK = $(DOCS_DIR)/.git
-REMOTE_DOCS_HOST = http://oubiwann.github.io/clojang/current/java
+REMOTE_DOCS_HOST = http://clojang.github.io/jiface/current/java
 LOCAL_DOCS_HOST = localhost
 LOCAL_DOCS_PORT = 5099
 

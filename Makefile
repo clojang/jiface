@@ -13,10 +13,7 @@ JAR := $(PROJ)-$(VERSION).jar
 UBERJAR := $(PROJ)-$(VERSION)-standalone.jar
 LOCAL_MAVEN := ~/.m2/repository
 
-clojars:
-	@lein deploy clojars
-
 include resources/make/code.mk
+include resources/make/jinterface.mk
 include resources/make/test.mk
 include resources/make/docs.mk
-include resources/make/lfe.mk

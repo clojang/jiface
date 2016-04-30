@@ -15,12 +15,9 @@
 * [Introduction](#introduction-)
 * [Dependencies](#dependencies-)
 * [Building](#building-)
-* [Shells & REPLs](#shells--repls-)
 * [Documentation](#documentation-)
 * [Usage](#usage-)
-  * [Low-level API](#low-level-api-)
-  * [Mid-level API](#mid-level-api-)
-  * [Running Tests](#running-tests-)
+* [Running Tests](#running-tests-)
 * [Erlang, Clojure, and JInterface](#erlang-clojure-and-jinterface-)
 * [License](#license-)
 
@@ -45,7 +42,6 @@ The mid-level Clojang API is intended for Clojure application developers who whi
 * Java
 * Erlang
 * lein
-* rebar3
 
 
 ## Building [&#x219F;](#contents)
@@ -58,28 +54,6 @@ If you wish to build your own JInterface ``.jar`` file and not use the one we've
 
 * [Building JInterface for Clojure](http://clojang.github.io/jiface/current/80-building-jinterface.html)
 
-
-## Shells & REPLs [&#x219F;](#contents)
-
-There are three interactive programming environments you may start, each of which will have full access to the project's libraries/dependencies.
-
-LFE:
-
-```bash
-$ make repl
-```
-
-Erlang:
-
-```bash
-$ rebar3 shell
-```
-
-Clojure:
-
-```bash
-$ lein repl
-```
 
 ## Documentation [&#x219F;](#contents)
 
@@ -150,7 +124,7 @@ Shell got {<5926.1.0>,'hello, world'}
 ```
 
 
-### Running Tests [&#x219F;](#contents)
+## Running Tests [&#x219F;](#contents)
 
 All the tests may be run with just one command:
 

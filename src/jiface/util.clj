@@ -67,3 +67,13 @@
       (fn [e & args]
         (println msg)
         (println (str {:args args :errors e}))))))
+
+(defn close-splash-screen
+  "Close the custom splash screen.
+
+  This function is used by Clojang's agent (during startup), it's needed as a
+  separate component and during compilation; as such it can't be part of
+  Clojang itself."
+  []
+  (-> (java.awt.SplashScreen/getSplashScreen)
+      (.close)))

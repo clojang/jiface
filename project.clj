@@ -14,7 +14,7 @@
     [dire "0.5.4"]
     [potemkin "0.4.3"]]
   :plugins [
-    [lein-codox "0.9.4"]
+    [lein-codox "0.9.5"]
     [lein-simpleton "1.3.0"]]
   :repl-options {:init-ns jiface.dev}
   :test-selectors {

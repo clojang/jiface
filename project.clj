@@ -1,5 +1,5 @@
-(defproject clojang/jiface "0.1.0-dev"
-  :description "Erlang's JInterface in Idiomatic Clojure"
+(defproject clojang/jiface "0.1.0"
+  :description "A Clojure-idiomatic wrapper around Erlang's JInterface"
   :url "https://github.com/clojang/jiface"
   :scm {
     :name "git"
@@ -23,6 +23,7 @@
     :system :system
     :integration :integration}
   :codox {
+    :project {:name "jiface"}
     :output-path "docs/master/current"
     :doc-paths ["docs/source"]
     :namespaces [#"^jiface\.erlang"

@@ -25,7 +25,9 @@
   :codox {
     :output-path "docs/master/current"
     :doc-paths ["docs/source"]
-    :namespaces [#"^jiface\.(?!test)"]
+    :namespaces [#"^jiface\.erlang"
+                 #"^jiface\.otp"
+                 jiface.util]
     :metadata {:doc/format :markdown}}
   :profiles {
     :testing {

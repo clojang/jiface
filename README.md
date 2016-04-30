@@ -1,13 +1,13 @@
 # jiface
 
+[![Clojars Project](https://img.shields.io/clojars/v/clojang/jiface.svg)](https://clojars.org/clojang/jiface)
+
 [![][jiface-logo]][jiface-logo-large]
 
 [jiface-logo]: resources/images/jiface-logo-250x.png
 [jiface-logo-large]: resources/images/jiface-logo-1000x.png
 
 *Erlang's JInterface in Idiomatic Clojure*
-
-[![Clojars Project](https://img.shields.io/clojars/v/clojang/jiface.svg)](https://clojars.org/clojang/jiface)
 
 
 #### Contents

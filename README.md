@@ -2,7 +2,7 @@
 
 [![Build Status][travis-badge]][travis][![Clojars Project][clojars-badge]][clojars]
 
-[![Clojang logo][clojang-logo]][clojang-logo-large]
+[![Jiface logo][jiface-logo]][jiface-logo-large]
 
 
 *Erlang's JInterface in Idiomatic Clojure*
@@ -216,7 +216,7 @@ Distributed under the Apache License Version 2.0.
 
 [travis]: https://travis-ci.org/clojang/jiface
 [travis-badge]: https://travis-ci.org/clojang/jiface.png?branch=master
-[clojang-logo]: resources/images/clojang-logo-250x.png
-[clojang-logo-large]: resources/images/clojang-logo-1000x.png
+[jiface-logo]: resources/images/jiface-logo-250x.png
+[jiface-logo-large]: resources/images/jiface-logo-1000x.png
 [clojars]: https://clojars.org/clojang/jiface
 [clojars-badge]: https://img.shields.io/clojars/v/clojang/jiface.svg

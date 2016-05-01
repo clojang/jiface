@@ -1,4 +1,5 @@
 language: clojure
+script: lein with-profile testing test
 jdk:
   - oraclejdk8
   - oraclejdk7

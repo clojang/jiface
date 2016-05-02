@@ -1,6 +1,4 @@
-# jiface
-
-[![Build Status][travis-badge]][travis][![Clojars Project][clojars-badge]][clojars]
+# jiface [![Build Status][travis-badge]][travis][![Clojars Project][clojars-badge]][clojars]
 
 [![Clojang logo][clojang-logo]][clojang-logo-large]
 

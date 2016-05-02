@@ -198,7 +198,7 @@ This is what is used by the ``rebar3`` configuration to run the jiface tests.
 
 ## Erlang, Clojure, and JInterface [&#x219F;](#contents)
 
-If you are interested in building your own JInterface ``.jar`` file for use with a Clojure project, be sure fo check out the page [Building JInterface for Clojure](https://clojang.github.io/jiface/current/80-building-jinterface.html) on the jiface docs site.
+If you are interested in building your own JInterface ``.jar`` file for use with a Clojure project, be sure fo check out the [jinterface-builder Clojang project](https://github.com/clojang/jinterface-builder). The project ``README`` has everything you need to get started.
 
 
 ## License [&#x219F;](#contents)

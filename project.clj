@@ -31,6 +31,8 @@
                  jiface.util]
     :metadata {:doc/format :markdown}}
   :profiles {
+    :uber {
+      :aot :all}
     :testing {
       :aot :all
       :dependencies [

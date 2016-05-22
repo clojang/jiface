@@ -1,4 +1,4 @@
-(defproject clojang/jiface "0.1.2-SNAPSHOT"
+(defproject clojang/jiface "0.2.0-SNAPSHOT"
   :description "A Clojure-idiomatic wrapper around Erlang's JInterface"
   :url "https://github.com/clojang/jiface"
   :scm {
@@ -39,6 +39,6 @@
     :dev {
       :dependencies [
         [org.clojure/tools.namespace "0.2.11"]
-        [twig "0.1.6"]]
+        [clojusc/twig "0.2.1"]]
       :source-paths ["dev-resources/src"]
       :aot [clojure.tools.logging.impl]}})

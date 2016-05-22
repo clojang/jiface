@@ -1,4 +1,4 @@
-# Clojang User's Guide: The Low-level API
+# jiface User's Guide
 
 ## The JInterface Package in Clojang
 
@@ -29,6 +29,7 @@ In the following sections, these topics are described:
 *    tracing message flow
 
 http://oubiwann.github.io/clojang/current/clojang.jinterface.erlang.types.html#var-atom
+
 
 ## Mapping of Basic Erlang Types to the JVM
 
@@ -61,7 +62,7 @@ Lists in Erlang are also used to describe sequences of printable characters (str
 A node as defined by Erlang/OTP is an instance of the Erlang Runtime System, a virtual machine roughly equivalent to a JVM. Each node has a unique name in the form of an identifier composed partly of the hostname on which the node is running, e.g ``gurka@sallad.com``. Several such nodes can run on the same host as long as their names are unique. The class [node](clojang/current/clojang.jinterface.otp.nodes.html#var-NodeObject) represents an Erlang node. It is created with a name and optionally a port number on which it listens for incoming connections. Before creating an instance of [node](clojang/current/clojang.jinterface.otp.nodes.html#var-NodeObject), ensure that EPMD is running on the host machine. See the Erlang documentation for more information about EPMD. In this example, the host name is appended automatically to the identifier, and the port number is chosen by the underlying system:
 
 ```clojure
-=> (require '[clojang.jinterface.otp.nodes :as nodes])
+=> (require '[jiface.otp.nodes :as nodes])
 nil
 => (def gurka (nodes/node "gurka"))
 #'user/node
@@ -84,7 +85,7 @@ user=> (def mbox (nodes/create-mbox gurka))
 or like this:
 
 ```clojure
-=> (require '[clojang.jinterface.otp.messaging :as messaging])
+=> (require '[jiface.otp.messaging :as messaging])
 nill
 user=> (def mbox (messaging/mbox gurka))
 #'user/mbox
@@ -159,7 +160,7 @@ Messages sent with this package must be instances of [object](clojang/current/cl
 In this example, we create a message containing our own pid so the echo process can reply:
 
 ```clojure
-=> (require '[clojang.jinterface.erlang.types :as types])
+=> (require '[jiface.erlang.types :as types])
 nil
 => (def msg (into-array (types/object) [(messaging/self mbox)
                                         (types/atom "hello, world")]))
@@ -222,7 +223,7 @@ TBD
 An Erlang node acting as a client to another Erlang node typically sends a request and waits for a reply. Such a request is included in a function call at a remote node and is called a remote procedure call. Remote procedure calls are supported through the [connection](http://oubiwann.github.io/clojang/current/clojang.jinterface.otp.connection.html#var-ConnectionObject) Clojure protocol. The following example shows how the ``connection`` protocol is used for remote procedure calls:
 
 ```clojure
-(require '[clojang.jinterface.otp.connection :as connection])
+(require '[jiface.otp.connection :as connection])
 (def self (nodes/self "client"))
 (def other (nodes/peer "clojang-lfe@mndltl01"))
 (def connx (nodes/connect self other))

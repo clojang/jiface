@@ -19,7 +19,7 @@ $(DOCS_GIT_HACK):
 
 devdocs: local-docs
 	@echo "\nRunning docs server on http://$(LOCAL_DOCS_HOST):$(LOCAL_DOCS_PORT)..."
-	@lein with-profile base,user,docs simpleton $(LOCAL_DOCS_PORT) file :from $(CURRENT)
+	@lein simpleton $(LOCAL_DOCS_PORT) file :from $(CURRENT)
 
 docs: local-docs
 
@@ -29,7 +29,7 @@ prod-docs: clean-docs $(DOCS_GIT_HACK) local-docs
 
 pre-docs:
 	@echo "\nBuilding docs ...\n"
-	@lein with-profile base,user,docs clean
+	@lein clean
 
 java-docs:
 	@javadoc -public \
@@ -60,7 +60,7 @@ erl-docs:
 	resources/patches/jinterface_users_guide.patch
 
 clojang-docs:
-	@lein with-profile base,user,docs codox
+	@lein codox
 
 clean-docs:
 	@rm -rf $(CURRENT)

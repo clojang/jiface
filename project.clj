@@ -14,7 +14,7 @@
     [dire "0.5.4"]
     [potemkin "0.4.3"]]
   :plugins [
-    [lein-codox "0.9.5"]
+    [lein-codox "0.10.2"]
     [lein-simpleton "1.3.0"]]
   :repl-options {:init-ns jiface.dev}
   :test-selectors {
@@ -41,6 +41,6 @@
     :dev {
       :dependencies [
         [org.clojure/tools.namespace "0.2.11"]
-        [clojusc/twig "0.2.1"]]
+        [clojusc/twig "0.3.0"]]
       :source-paths ["dev-resources/src"]
       :aot [clojure.tools.logging.impl]}})

@@ -1,9 +1,11 @@
-# jiface [![Build Status][travis-badge]][travis][![Clojars Project][clojars-badge]][clojars]
-
-[![Clojang logo][clojang-logo]][clojang-logo-large]
-
+# jiface
+[![Build Status][travis-badge]][travis]
+[![Dependencies Status][deps-badge]][deps]
+[![Clojars Project][clojars-badge]][clojars]
 
 *Erlang's JInterface in Idiomatic Clojure*
+
+[![Project logo][logo]][logo-large]
 
 
 #### Contents
@@ -214,7 +216,9 @@ Distributed under the Apache License Version 2.0.
 
 [travis]: https://travis-ci.org/clojang/jiface
 [travis-badge]: https://travis-ci.org/clojang/jiface.png?branch=master
-[clojang-logo]: https://github.com/clojang/resources/blob/master/images/logo-5-250x.png
-[clojang-logo-large]: https://github.com/clojang/resources/blob/master/images/logo-5-1000x.png
+[deps]: http://jarkeeper.com/clojang/jiface
+[deps-badge]: http://jarkeeper.com/clojang/jiface/status.svg
 [clojars]: https://clojars.org/clojang/jiface
 [clojars-badge]: https://img.shields.io/clojars/v/clojang/jiface.svg
+[logo]: https://github.com/clojang/resources/blob/master/images/logo-5-250x.png
+[logo-large]: https://github.com/clojang/resources/blob/master/images/logo-5-1000x.png

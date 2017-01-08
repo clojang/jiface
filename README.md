@@ -206,7 +206,7 @@ If you are interested in building your own JInterface ``.jar`` file for use with
 ## License [&#x219F;](#contents)
 
 ```
-Copyright © 2015-2016 Duncan McGreggor
+Copyright © 2016-2017 Duncan McGreggor
 
 Distributed under the Apache License Version 2.0.
 ```

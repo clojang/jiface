@@ -61,7 +61,7 @@ Project documentation, including jiface API reference docs, Javadocs for JInterf
 
 Quick links for the other docs:
 
-* [jiface User Guides](http://clojang.github.io/jiface/current/10-low-level.html) - A translation of the *JInterface User's Guide* (Erlang documantaion) from Java into Clojure
+* [jiface User Guides](http://clojang.github.io/jiface/current/10-low-level-api.html) - A translation of the *JInterface User's Guide* (Erlang documantaion) from Java into Clojure
 * [JInterface User's Guide](http://clojang.github.io/jiface/current/erlang/jinterface_users_guide.html) - The JInterface documentation provided in Erlang distributions
 * [Jinterface Javadocs](http://clojang.github.io/jiface/current/erlang/java) - Javadoc-generated API documentation built from the JInterface source code
 

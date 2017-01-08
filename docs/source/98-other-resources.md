@@ -2,7 +2,10 @@
 
 ## Clojang
 
-* [Project on Github](http://github.com/oubiwann/clojang)
+* [Clojang](https://github.com/clojang/clojang), A High-Level API wrapping [jiface](https://github.com/clojang/jiface)
+* The [Startup JVM Agent](https://github.com/clojang/agent)
+* [JInterface Builder](https://github.com/clojang/jinterface-builder)
+* All [Clojang Projects](http://github.com/clojang) on Github
 
 ## Related Languages
 

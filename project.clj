@@ -23,9 +23,7 @@
     :system :system
     :integration :integration}
   :codox {
-    :dependencies [[codox-theme-rdash "0.1.1"]]
     :project {:name "jiface"}
-    :themes [:rdash]
     :output-path "docs/master/current"
     :doc-paths ["docs/source"]
     :namespaces [#"^jiface\.erlang"

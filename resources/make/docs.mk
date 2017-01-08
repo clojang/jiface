@@ -6,7 +6,7 @@ REPO = $(shell git config --get remote.origin.url)
 DOCS_BUILD_DIR = $(DOCS_DIR)/build
 DOCS_PROD_DIR = $(DOCS_DIR)/master
 CURRENT = $(DOCS_PROD_DIR)/current
-ERL_DOCS_SRC = ~/Dropbox/Docs/Erlang
+ERL_DOCS_SRC = ~/Dropbox/Docs/Erlang/19.2
 ERL_DOCS_DIR = $(CURRENT)/erlang
 JAVA_DOCS_DIR = $(ERL_DOCS_DIR)/java
 DOCS_GIT_HACK = $(DOCS_DIR)/.git
@@ -44,23 +44,17 @@ java-docs:
 erl-docs:
 	@mkdir -p $(ERL_DOCS_DIR) $(DOCS_PROD_DIR)/doc
 	@cp \
-	$(ERL_DOCS_SRC)/lib/jinterface-$(JINTERFACE_VER)/doc/html/users_guide.html \
-	$(ERL_DOCS_SRC)/lib/jinterface-$(JINTERFACE_VER)/doc/html/jinterface_users_guide.html \
+	resources/html/users_guide.html \
+	resources/html/jinterface_users_guide.html \
 	$(ERL_DOCS_DIR)
 	@cp -r \
 	$(ERL_DOCS_SRC)/doc/js \
 	$(ERL_DOCS_SRC)/doc/otp_doc.css \
 	$(ERL_DOCS_SRC)/doc/erlang-logo.png \
 	$(CURRENT)
-	@patch \
-	$(CURRENT)/erlang/users_guide.html \
-	resources/patches/erlang_users_guide.patch
-	@patch \
-	$(CURRENT)/erlang/jinterface_users_guide.html \
-	resources/patches/jinterface_users_guide.patch
 
 clojang-docs:
-	@lein codox
+	@lein with-profile docs codox
 
 clean-docs:
 	@rm -rf $(CURRENT)

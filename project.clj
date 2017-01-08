@@ -10,7 +10,7 @@
   :dependencies [
     [org.clojure/clojure "1.8.0"]
     [org.clojure/core.match "0.3.0-alpha4"]
-    [org.erlang.otp/jinterface "1.6.1"]
+    [clojang/erlang-jinterface "1.7.1"]
     [dire "0.5.4"]
     [potemkin "0.4.3"]]
   :plugins [
@@ -24,6 +24,7 @@
     :integration :integration}
   :codox {
     :project {:name "jiface"}
+    :themes [:rdash]
     :output-path "docs/master/current"
     :doc-paths ["docs/source"]
     :namespaces [#"^jiface\.erlang"
@@ -33,6 +34,8 @@
   :profiles {
     :uber {
       :aot :all}
+    :docs {
+      :dependencies [[codox-theme-rdash "0.1.1"]]}
     :testing {
       :aot :all
       :dependencies [

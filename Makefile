@@ -13,7 +13,13 @@ JAR := $(PROJ)-$(VERSION).jar
 UBERJAR := $(PROJ)-$(VERSION)-standalone.jar
 LOCAL_MAVEN := ~/.m2/repository
 
+show-versions:
+	@echo Project: $(PROJ), $(PROJ_VERSION)
+	@echo Erlang: $(ERL_VERSION)
+	@echo JInterface: $(JINTERFACE_VER)
+	@echo Clojure: $(CLOJURE_VER)
+	@echo lein/JVM: $(shell lein version)
+
 include resources/make/code.mk
-include resources/make/jinterface.mk
 include resources/make/test.mk
 include resources/make/docs.mk

@@ -1,4 +1,4 @@
-(defproject clojang/jiface "0.2.0-SNAPSHOT"
+(defproject clojang/jiface "0.3.0-SNAPSHOT"
   :description "A Clojure-idiomatic wrapper around Erlang's JInterface"
   :url "https://github.com/clojang/jiface"
   :scm {
@@ -11,6 +11,7 @@
     [org.clojure/clojure "1.8.0"]
     [org.clojure/core.match "0.3.0-alpha4"]
     [clojang/erlang-jinterface "1.7.1"]
+    [clojusc/twig "0.3.0"]
     [dire "0.5.4"]
     [potemkin "0.4.3"]]
   :plugins [
@@ -38,12 +39,10 @@
       :dependencies [[codox-theme-rdash "0.1.1"]]}
     :testing {
       :aot :all
-      :dependencies [
-        [org.clojure/math.numeric-tower "0.0.4"]]
       :source-paths ["test"]}
     :dev {
       :dependencies [
-        [org.clojure/tools.namespace "0.2.11"]
-        [clojusc/twig "0.3.0"]]
+        [org.clojure/math.numeric-tower "0.0.4"]
+        [org.clojure/tools.namespace "0.2.11"]]
       :source-paths ["dev-resources/src"]
       :aot [clojure.tools.logging.impl]}})

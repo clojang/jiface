@@ -10,21 +10,21 @@
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 (defn object
-  "This is a psuedo-constructor: ``OtpErlangObject`` doesn't provide a
+  "This is a psuedo-constructor: `OtpErlangObject` doesn't provide a
   constructor method, but the object itself is needed for creating tuples,
-  so this function simply returns ``OtpErlangObject``."
+  so this function simply returns `OtpErlangObject`."
   []
   com.ericsson.otp.erlang.OtpErlangObject)
 
 (defn atom
   "Constructor for an Erlang atom data type."
   [arg]
-  (erlang/init 'atom arg))
+  (erlang/create :atom arg))
 
 (defn boolean
   "Constructor for an Erlang boolean (atom) data type."
   [bool]
-  (erlang/init 'boolean bool))
+  (erlang/create :boolean bool))
 
 (defn tuple
   "Provides a Java representation of Erlang tuples. Tuples are created from
@@ -34,7 +34,7 @@
   indexed from 0 to (arity-1) and can be retrieved individually by using the
   appropriate index."
   [args]
-  (erlang/init 'tuple args))
+  (erlang/create :tuple args))
 
 (defn list
   "Provides a Java representation of Erlang lists. Lists are created from
@@ -42,14 +42,14 @@
 
   The arity of the list is the number of elements it contains."
   ([]
-    (erlang/init 'list))
+    (erlang/create :list))
   ([args]
-    (erlang/init 'list args)))
+    (erlang/create :list args)))
 
 (defn string
   "Provides a Java representation of Erlang strings."
   [str]
-  (erlang/init 'string str))
+  (erlang/create :string str))
 
 (defn map
   "Provides a Java representation of Erlang maps. Maps are created from one
@@ -59,13 +59,13 @@
   values can be retrieved as arrays and the value for a key can be
   queried."
   ([]
-    (erlang/init 'map))
+    (erlang/create :map))
   ([buf]
-    (erlang/init 'map buf))
+    (erlang/create :map buf))
   ([ks vs]
-    (erlang/init 'map ks vs))
+    (erlang/create :map ks vs))
   ([ks kstart kcount vs vstart vcount]
-    (erlang/init 'map ks kstart kcount vs vstart vcount)))
+    (erlang/create :map ks kstart kcount vs vstart vcount)))
 
 (defn long
   "Provides a Java representation of Erlang integral types. Erlang does not
@@ -75,37 +75,37 @@
   additional classes, OtpErlangUInt and OtpErlangUShort are provided for
   Corba compatibility. See the documentation for IC for more information."
   [num]
-  (erlang/init 'long num))
+  (erlang/create :long num))
 
 (defn byte
   "See the docstring for ``#'types/long``."
   [num]
-  (erlang/init 'byte num))
+  (erlang/create :byte num))
 
 (defn char
   "See the docstring for ``#'types/long``."
   [num]
-  (erlang/init 'char num))
+  (erlang/create :char num))
 
 (defn int
   "See the docstring for ``#'types/long``."
   [num]
-  (erlang/init 'int num))
+  (erlang/create :int num))
 
 (defn short
   "See the docstring for ``#'types/long``."
   [num]
-  (erlang/init 'short num))
+  (erlang/create :short num))
 
 (defn uint
   "See the docstring for ``#'types/long``."
   [num]
-  (erlang/init 'uint num))
+  (erlang/create :uint num))
 
 (defn ushort
   "See the docstring for ``#'types/long``."
   [num]
-  (erlang/init 'ushort num))
+  (erlang/create :ushort num))
 
 (defn double
   "Provides a Java representation of Erlang floats and doubles. Erlang defines
@@ -113,18 +113,18 @@
   ``OtpErlangFloat`` are used to provide representations corresponding to the
   Java types ``Double`` and ``Float``."
   [num]
-  (erlang/init 'double num))
+  (erlang/create :double num))
 
 (defn float
   "See the docstring for ``#'types/double``."
   [num]
-  (erlang/init 'float num))
+  (erlang/create :float num))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;; Error handling
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-(util/add-err-handler #'erlang/init
+(util/add-err-handler #'erlang/create
   [java.lang.IllegalArgumentException,
    java.lang.InstantiationException]
   "[ERROR] could not instantiate object!")

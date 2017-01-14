@@ -17,3 +17,6 @@ debug:
 
 clojars:
 	@lein deploy clojars
+
+repl:
+	@lein with-profile +test repl

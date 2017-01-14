@@ -9,10 +9,10 @@
   (get-arity [this]
     "Get the arity of the tuple.")
   (size [this]
-    "Alias for ``get-arity``, taken from the Erlang world for getting the
+    "Alias for `get-arity`, taken from the Erlang world for getting the
     size of a tuple.")
   (get-size [this]
-    "Alias for ``get-arity``.")
+    "Alias for `get-arity`.")
   (get-element [this index]
     "Get the specified element from the tuple.")
   (get-elements [this]

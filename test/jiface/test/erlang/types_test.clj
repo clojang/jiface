@@ -15,13 +15,9 @@
            [java.lang Long]
            [java.math BigInteger]))
 
-(deftest ^:unit make-erl-name-test
-  (is (= 'com.ericsson.otp.erlang.OtpErlangAtom
-         (erlang/make-erl-name 'atom))))
-
-(deftest ^:unit init-test
+(deftest ^:unit create-test
   (is (= com.ericsson.otp.erlang.OtpErlangAtom
-         (type (erlang/init 'atom "a")))))
+         (type (erlang/create :atom "a")))))
 
 (deftest ^:unit atom-constructor-test
   (is (= com.ericsson.otp.erlang.OtpErlangAtom

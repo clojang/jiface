@@ -1,6 +1,5 @@
 (ns jiface.otp.connection
-  (:require [jiface.otp :as otp]
-            [jiface.util :as util])
+  (:require [jiface.otp :as otp])
   (:import [com.ericsson.otp.erlang
             AbstractConnection
             OtpConnection

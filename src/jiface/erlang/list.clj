@@ -9,9 +9,9 @@
   (get-arity [this]
     "Get the arity of the tuple.")
   (length [this]
-    "Alias for ``get-arity`` borrowed from the Erlang world.")
+    "Alias for `get-arity` borrowed from the Erlang world.")
   (get-length [this]
-    "Alias for ``get-arity``")
+    "Alias for `get-arity`")
   (get-element [this index]
     "Get the specified element from the tuple.")
   (get-elements [this]

@@ -8,7 +8,7 @@
   (get-arity [this]
     "Get the arity of the map.")
   (->set [this]
-    "Make a ``Set`` view of the map key-value pairs.")
+    "Make a `Set` view of the map key-value pairs.")
   (get [this key]
     "Get the specified value from the map.")
   (get-keys [this]

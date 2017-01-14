@@ -16,12 +16,12 @@
 (defn node
   "Constructor for ``OtpNode``."
   [node-name & args]
-  (apply #'otp/init (into ['node node-name] args)))
+  (apply #'otp/create (into [:node node-name] args)))
 
 (defn self
   "Constructor for ``OtpSelf``."
   [node-name & args]
-  (apply #'otp/init (into ['self node-name] args)))
+  (apply #'otp/create (into [:self node-name] args)))
 
 (defn peer
   "Constructor for ``OtpPeer``.
@@ -30,7 +30,7 @@
   and other node-specific information that is needed by the OtpConnection
   class"
   [node-name & args]
-  (apply #'otp/init (into ['peer node-name] args)))
+  (apply #'otp/create (into [:peer node-name] args)))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;; OTP protocols
@@ -271,7 +271,7 @@
 ;;; Error handling
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-(util/add-err-handler #'otp/init
+(util/add-err-handler #'otp/create
   [java.lang.IllegalArgumentException,
    java.lang.InstantiationException]
   "[ERROR] could not instantiate object!")

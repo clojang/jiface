@@ -10,6 +10,7 @@
   :dependencies [
     [org.clojure/clojure "1.8.0"]
     [org.clojure/core.match "0.3.0-alpha4"]
+    [org.clojure/core.memoize "0.5.9"]
     [clojang/erlang-jinterface "1.7.1"]
     [clojusc/twig "0.3.0"]
     [dire "0.5.4"]
@@ -18,11 +19,6 @@
     [lein-codox "0.10.2"]
     [lein-simpleton "1.3.0"]]
   :repl-options {:init-ns jiface.dev}
-  :test-selectors {
-    :default :unit
-    :unit :unit
-    :system :system
-    :integration :integration}
   :codox {
     :project {:name "jiface"}
     :themes [:rdash]
@@ -36,10 +32,16 @@
     :uber {
       :aot :all}
     :docs {
+      :aot :all
       :dependencies [[codox-theme-rdash "0.1.1"]]}
     :testing {
       :aot :all
-      :source-paths ["test"]}
+      :source-paths ["test"]
+      :test-selectors {
+        :default :unit
+        :unit :unit
+        :system :system
+        :integration :integration}}
     :dev {
       :dependencies [
         [org.clojure/math.numeric-tower "0.0.4"]

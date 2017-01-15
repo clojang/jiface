@@ -1,5 +1,17 @@
 # The APIs
 
+There are three APIs to chose from if you wish to interact with
+Erlang-compatible nodes from the JVM:
+
+* `JInterface` - The Ericsson/Erlang-maintained Java implementation of the
+  Erlang communication protocol
+* `jiface` - A Clojure library that provides a very thing idomatic Clojure
+  wrapper around `JInterface`
+* `clojang` - A Clojure library that attempts to make communications with
+  Erlang from Clojure as Clojure-native feeling as possible
+
+The differences are discussed below and demonstrated with a working example.
+
 
 ## JInterface
 
@@ -37,19 +49,19 @@ of Erlang data types (JInterface objects).
 
 #object[com.ericsson.otp.erlang.OtpErlangTuple
         0x4c9e3fa6
-        "{#Pid<gurka@mndltl01.1.0>,'hello, world'}"]
+        "{#Pid<gurka@host.1.0>,'hello, world'}"]
 ```
 
-From LFE:
+From LFE (started with `-sname lfe`):
 
 ```cl
-(lfe@mndltl01)> (! #(echo gurka@mndltl01) `#(,(self) hej!))
+(clojang-lfe@host)> (! #(echo gurka@host) `#(,(self) hej!))
 #(<0.35.0> hej!)
 ```
 
 Then back in Clojure:
 
-```clojure
+```clj
 (def data (.receive inbox))
 (def lfe-pid (.elementAt data 0))
 (def lfe-msg (-> data
@@ -60,10 +72,10 @@ Then back in Clojure:
 (.send inbox lfe-pid (new OtpErlangTuple msg))
 ```
 
-Then, back in LFE:
+Finally, back in LFE:
 
 ```cl
-(lfe@mndltl01)> (c:flush)
+(clojang-lfe@host)> (c:flush)
 Shell got {<5926.1.0>,'hello, world'}
 ```
 
@@ -80,26 +92,121 @@ JInterface via idiomatic Clojure. This is the
 Here is the example above, rewritten using `jiface`:
 
 ```clj
-TBD
+(require '[jiface.erlang.tuple :as tuple]
+         '[jiface.erlang.types :as types]
+         '[jiface.otp.nodes :as nodes]
+         '[jiface.otp.messaging :as messaging])
+
+(def gurka (nodes/node "gurka"))
+(def inbox (nodes/create-mbox gurka))
+(messaging/register-name inbox "echo")
+
+(def msg (into-array
+           (types/object)
+           [(messaging/self inbox)
+            (types/atom "hello, world")]))
+
+(messaging/send inbox "echo" "gurka" (types/tuple msg))
+(messaging/receive inbox)
 ```
+
+From LFE (started with `-sname lfe`):
+
+```cl
+(clojang-lfe@host)> (! #(echo gurka@host) `#(,(self) hej!))
+#(<0.35.0> hej!)
+```
+
+Then back in Clojure:
+
+```clj
+(def data (messaging/receive inbox))
+(def lfe-pid (tuple/get-element data 0))
+(def lfe-msg (-> data
+                 (tuple/get-element 1)
+                 (str)
+                 (clojure.string/replace "'" "")
+                 (keyword)))
+(messaging/send inbox lfe-pid (types/tuple msg))
+```
+
+Finally, back in LFE:
+
+```cl
+(clojang-lfe@host)> (c:flush)
+Shell got {<5926.1.0>,'hello, world'}
+```
+
+As you can see, the `jiface` version of the example is essentially the same
+thing -- as it should be -- with the difference being that instead of calling
+methods on Java objects, you're calling Clojure functions (well, protocol
+implementations). It's a bit clearner and certainly something Clojurians will
+be more comfortable with, but we've only dealt with one layer of translation:
+from Java to Clojure. There's still another one: how to make a Java translation
+of Erlang more sensible in Clojure. Ideally, it would be as simple and
+straight-forward as when connecting to nodes from LFE.
 
 
 ## High-level Clojure API
 
-The next step was to use that low-level API to create a "high-level" API, one
-that automatically performned the necessary type conversions of function
-parameters and returned results, allowing one to write the sort of Clojure one
-would normally do, without having to cast to Erlang types as is necessary in
-the low-level Clojure API. This work is captured in a separate project,
-[Clojang](https://github.com/clojang/clojang).
+The next step is to use a higher-level API that wraps the low-level API, one
+that automatically performns the necessary type conversions of function
+parameters and returned results. This would allow one to write the sort of
+Clojure one would normally do, without having to cast to Erlang types as is
+necessary in the low-level Clojure API. This work is captured in a separate
+project, [Clojang](https://github.com/clojang/clojang).
 
-The high-level Clojang API is intended for Clojure application developers who
+This high-level Clojang API is intended for Clojure application developers who
 wish to integrate with languages running on the Erlang VM without having to
-compromise on the Clojure side. It is anticipated that clojang will be far
-preferred over jiface.
+compromise on the Clojure side. It is anticipated that `clojang` will be far
+preferrable to developers over `jiface`.
 
-Here is the example above, rewritten using `clojang`:
+Below is the example above, rewritten using `clojang`. Before going over it,
+though, you'll note that when you start a `clojang` Clojure REPL, you'll see
+the Clojang logo/splash screen: what's happening behind the scenes is that
+a Java agent is starting up a Clojang node in the same when as well you start
+LFE with the `-sname lfe` parameter, LFE creates an Erlang VM that's capable of
+communicating with other nodes. So that's what we have: a default Clojure node
+is created for us (complete with its own mbox) that is capable of communicating
+with other nodes.
+
+Here, we don't need to set up a node and a message box for that node, since
+we'll be using the default (created by the Clojang Java agent). As such, we're
+ready to start sending messages immediately:
 
 ```clj
-TBD
+(require '[clojang.mbox :as mbox]
+         '[clojang.node :as node])
+
+                                                             ; XXX auto-retister :default so we don't need this line
+(mbox/register-name :echo)                                   ; XXX need to add support for arity-1
+(mbox/! :echo "clojang@host" [(mbox/self) "hello, world"])   ; XXX need to add support for arity-3
+(mbox/receive)
 ```
+
+From LFE (started with `-sname lfe`):
+
+```cl
+(clojang-lfe@host)> (register 'lferepl (self))
+(clojang-lfe@host)> (! #(echo clojang@host) `#(,(self) hej!))
+```
+
+Then back in Clojure:
+
+```clj
+(def data (mbox/receive))
+(def lfe-pid (get data 0)
+(def lfe-msg (get data 1)
+(mbox/! :lferepl "clojang-lfe@host" [(mbox/self) "hello, world"]) ; XXX need to add support for arity-3
+```
+
+Then, back in LFE:
+
+```cl
+(clojang-lfe@clojang)> (c:flush)
+Shell got {<5926.1.0>,"hello, world"}
+```
+
+Finally, with this high-level API, we can see a level of usability for the
+Erlang protocol communication in Clojure that is on par with that in LFE
+itself.

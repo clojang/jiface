@@ -5,23 +5,26 @@ Erlang-compatible nodes from the JVM:
 
 * `JInterface` - The Ericsson/Erlang-maintained Java implementation of the
   Erlang communication protocol
-* `jiface` - A Clojure library that provides a very thing idomatic Clojure
+* `jiface` - A Clojure library that provides a very thin idomatic Clojure
   wrapper around `JInterface`
 * `clojang` - A Clojure library that attempts to make communications with
-  Erlang from Clojure as Clojure-native feeling as possible
+  Erlang from Clojure as Clojure-native feeling as possible, eliminating as
+  much boilerplate as possible
 
-The differences are discussed below and demonstrated with a working example.
+The differences are discussed below and demonstrated with a working example,
+contrasted in all three.
 
 
 ## JInterface
 
 JInterface is an invaluable tool for projects that need to have JVM and Erlang
 VM languages communicating with each other. However, it is rather verbose
-(regardless of which JVM language you use) and especially  cumbersome to use
-in Clojure. The syntatical burden is often enough to discourage
-experimentation and play -- essential ingrediates for innovation.
+(regardless of which JVM language you use) and feels cumbersome to use from
+Clojure. The syntatical burden and often anti-inuitive usage is sometimes
+enough to discourage experimentation and play (the latter being an essential
+ingrediates for innovation :-)).
 
-The code below should be contrasted with the two analog examples for Clojang
+The code below should be contrasted with the two examples for Clojang
 which have been written in its low- and high-level APIs. It is meant to show
 the awkwardness of using JInterface from Clojure. Clojure applications built
 using JInterface get very ugly, very quickly, especially with all the parsing
@@ -163,16 +166,17 @@ preferrable to developers over `jiface`.
 
 Below is the example above, rewritten using `clojang`. Before going over it,
 though, you'll note that when you start a `clojang` Clojure REPL, you'll see
-the Clojang logo/splash screen: what's happening behind the scenes is that
-a Java agent is starting up a Clojang node in the same when as well you start
-LFE with the `-sname lfe` parameter, LFE creates an Erlang VM that's capable of
-communicating with other nodes. So that's what we have: a default Clojure node
-is created for us (complete with its own mbox) that is capable of communicating
-with other nodes.
+the Clojang logo/splash screen. What's happening behind the scenes is that the
+Clojang Java agent is starting up a Clojang node in a way analogous to when
+you start LFE with the `-sname lfe` parameter. In the latter case, LFE creates
+an Erlang VM that's capable of communicating with other nodes. Similarly, what
+we have with Clojang is a default Clojure node that is created for us by the
+agent (complete with its own mbox) that is capable of communicating with other
+nodes.
 
-Here, we don't need to set up a node and a message box for that node, since
-we'll be using the default (created by the Clojang Java agent). As such, we're
-ready to start sending messages immediately:
+As such, in this example we don't need to set up a node and a message box for
+that node; we'll be using the default one created by the agent). Given this,
+we're ready to start sending messages immediately:
 
 ```clj
 (require '[clojang.mbox :as mbox]

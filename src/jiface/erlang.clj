@@ -9,3 +9,7 @@
   objects allows us to handle instantiation errors easily, adding one handler
   for ``#'init`` instead of a bunch of handlers, one for each data type."
   (jiface/dynamic-init :erlang args))
+
+;;; Aliases
+
+(def init #'create)

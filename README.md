@@ -22,29 +22,38 @@
 
 ## Introduction [&#x219F;](#contents)
 
-This project provides a solution to the [aesthetic problem of JInterface](https://github.com/clojang/clojang/wiki/Example:-JInterface-in-Clojure). While JInterface is an invaluable tool for projects that need to have JVM and Erlang VM languages communicating with each other, it is rather verbose and cumbersom to do so in Clojure. The syntatical burden is often enough to discourage experimentation and play -- essential ingrediates for innovation. The primary goal of jiface is to make it not only easy to write for the Clojure/Erlang interface, but fun as well.
+This project provides a solution to the
+[aesthetic problem of JInterface](https://github.com/clojang/clojang/wiki/Example:-JInterface-in-Clojure).
+While JInterface is an invaluable tool for projects that need to have JVM and
+Erlang VM languages communicating with each other, it is rather verbose and
+cumbersom to do so in Clojure. The syntatical burden is often enough to
+discourage experimentation and play -- essential ingrediates for innovation.
+The primary goal of jiface is to make it not only easy to write for the
+Clojure/Erlang interface, but fun as well.
 
-**Low-level API**
+For details on the `jiface` API and its relation to JInterface and Clojang, see
+[the APIs summary](http://clojang.github.io/jiface/current/05-apis.html) page.
 
-The first step towards that was to write a Clojure wrapper for JInterface -- a low-level one that is essentially identical to native JInterface. This will be useful for anyone from a functional programming background who wants low-level access to JInterface via idiomatic Clojure. This is the jiface project.
 
-**Mid-level API**
+## Changes [&#x219F;](#contents)
 
-The second step was to use that low-level API to create a "mid-level" API, one that automatically performned the necessary type conversions of function parameters and returned results, allowing one to write the sort of Clojure one would normally do, without having to cast to Erlang types as is necessary in the low-level Clojure API. This work is captured in a separate project, [Clojang](https://github.com/clojang/clojang).
-
-The mid-level Clojang API is intended for Clojure application developers who which to integrate with languages running on the Erlang VM without having to compromise on the Clojure side.
+For details on breaking changes made between jiface releases, see
+[the changes](http://clojang.github.io/jiface/current/80-changes.html) page.
 
 
 ## Dependencies [&#x219F;](#contents)
 
 * Java
-* Erlang
+* Erlang (`epmd` in particular)
 * lein
 
 
 ## Building [&#x219F;](#contents)
 
-``rebar3`` is used for the top-level builds of the project. It runs ``lein`` under the covers in order to build the Clojure code and create the jiface``.jar`` file. As such, to build everything -- LFE, Erlang, and Clojure -- you need only do the following:
+``rebar3`` is used for the top-level builds of the project. It runs ``lein``
+under the covers in order to build the Clojure code and create the
+jiface``.jar`` file. As such, to build everything -- LFE, Erlang, and Clojure
+-- you need only do the following:
 
 * ``rebar3 compile``
 
@@ -59,15 +68,15 @@ Project documentation, including jiface API reference docs, Javadocs for JInterf
 
 * [http://clojang.github.io/jiface/current/](http://clojang.github.io/jiface/current/)
 
-Quick links for the other docs:
+Of particular note:
 
-* [jiface User Guides](http://clojang.github.io/jiface/current/10-low-level-api.html) - A translation of the *JInterface User's Guide* (Erlang documantaion) from Java into Clojure
+* [jiface User's Guide](http://clojang.github.io/jiface/current/10-low-level-api.html) - A translation of the *JInterface User's Guide* (Erlang documantaion) from Java into Clojure
 * [JInterface User's Guide](http://clojang.github.io/jiface/current/erlang/jinterface_users_guide.html) - The JInterface documentation provided in Erlang distributions
 * [Jinterface Javadocs](http://clojang.github.io/jiface/current/erlang/java) - Javadoc-generated API documentation built from the JInterface source code
 
-Mid-level API docs:
+High-level API docs:
 
-* [Clojang User Guides](http://clojang.github.io/clojang/current/10-low-level.html) - An adaptation of the *jiface User's Guide* for the mid-level idiomatic Clojure API
+* [Clojang User's Guide](http://clojang.github.io/clojang/current/10-low-level.html) - An adaptation of the *jiface User's Guide* for the mid-level idiomatic Clojure API
 
 
 ## Usage [&#x219F;](#contents)

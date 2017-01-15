@@ -127,5 +127,4 @@
 (util/add-err-handler #'erlang/create
   [java.lang.IllegalArgumentException,
    java.lang.InstantiationException]
-  "[ERROR] could not instantiate object!")
-
+  "[ERROR] could not instantiate object")

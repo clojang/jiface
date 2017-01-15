@@ -1,5 +1,6 @@
 (ns jiface.otp.nodes
-  (:require [jiface.otp :as otp]
+  (:require [clojure.core.memoize :as memo]
+            [jiface.otp :as otp]
             [jiface.util :as util])
   (:import [com.ericsson.otp.erlang
             AbstractNode
@@ -14,17 +15,17 @@
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 (defn node
-  "Constructor for ``OtpNode``."
+  "Constructor for `OtpNode`."
   [node-name & args]
   (apply #'otp/create (into [:node node-name] args)))
 
 (defn self
-  "Constructor for ``OtpSelf``."
+  "Constructor for `OtpSelf`."
   [node-name & args]
   (apply #'otp/create (into [:self node-name] args)))
 
 (defn peer
-  "Constructor for ``OtpPeer``.
+  "Constructor for `OtpPeer`.
 
   Represents a remote OTP node. It acts only as a container for the nodename
   and other node-specific information that is needed by the OtpConnection
@@ -41,8 +42,8 @@
 
   About nodenames: Erlang nodenames consist of two components, an alivename
   and a hostname separated by '@'. Additionally, there are two nodename
-  formats: short and long. Short names are of the form ``alive@hostname``,
-  while long names are of the form ``alive@host.fully.qualified.domainname``.
+  formats: short and long. Short names are of the form `alive@hostname`,
+  while long names are of the form `alive@host.fully.qualified.domainname`.
   Erlang has special requirements regarding the use of the short and long
   formats, in particular they cannot be mixed freely in a network of
   communicating nodes, however Jinterface makes no distinction. See the Erlang
@@ -59,7 +60,7 @@
   default cookie by those constructors lacking a cookie argument. If for any
   reason the file cannot be found or read, the default cookie will be set to
   the empty string (""). The location of a user's home directory is determined
-  using the system property ``user.home``, which may not be automatically set
+  using the system property `user.home`, which may not be automatically set
   on all platforms.
 
   Instances of this class cannot be created directly, use one of the subclasses
@@ -69,9 +70,9 @@
   (get-cookie [this]
     "Get the authorization cookie used by this node.")
   (create-transport [this addr port-num]
-    "Create instance of ``OtpTransport``.")
+    "Create instance of `OtpTransport`.")
   (create-server-transport [this port-num]
-    "Create instance of ``OtpServerTransport``.")
+    "Create instance of `OtpServerTransport`.")
   (get-hostname [this]
     "Get the hostname part of the nodename.")
   (get-name [this]
@@ -111,7 +112,7 @@
 
 (defprotocol LocalNodeObject
   "This class represents local node types. It is used to group the node types
-  ``OtpNode`` and ``OtpSelf``."
+  `OtpNode` and `OtpSelf`."
   (create-pid [this]
     "Create an Erlang pid.")
   (create-port [this]
@@ -151,7 +152,7 @@
   a given node will cause a connection to be set up to that node. Any
   messages received will be delivered to the appropriate mailboxes.
 
-  To shut down the node, call ``(close)``. This will prevent the node from
+  To shut down the node, call `(close)`. This will prevent the node from
   accepting additional connections and it will cause all existing
   connections to be closed. Any unread messages in existing mailboxes can
   still be read, however no new messages will be delivered to the mailboxes.
@@ -266,6 +267,16 @@
 (extend OtpSelf AbstractNodeObject abstract-node-behaviour)
 (extend OtpSelf LocalNodeObject local-node-behaviour)
 (extend OtpSelf SelfObject self-behaviour)
+
+(def default-node
+  "Get the default node.
+
+  The results of this function are memoized as the intent is to obtain a
+  singleton instance of the default node. (The Erlang JInterface docs
+  recommend that only one node be run per JVM instance.)"
+  (memo/lru
+    (fn [node-name]
+      (node node-name))))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;; Error handling

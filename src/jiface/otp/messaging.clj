@@ -1,5 +1,6 @@
 (ns jiface.otp.messaging
-  (:require [jiface.otp :as otp]
+  (:require [clojure.core.memoize :as memo]
+            [jiface.otp :as otp]
             [jiface.util :as util])
   (:import [clojure.lang Keyword]
            [com.ericsson.otp.erlang
@@ -241,3 +242,20 @@
    OtpMsg/regSendTag :reg-send
    OtpMsg/sendTag :send
    OtpMsg/unlinkTag :unlink})
+
+(def default-mbox
+  "Get the mbox for the default node.
+
+  The results of this function are memoized as the intent is to obtain a
+  singleton instance for the default node. (The Erlang JInterface docs
+  recommend that only one node be run per JVM instance.)
+
+  Note that since this memozation makes no assumptions about the passed node,
+  unexpected results may ensure if the JVM default node isn't what is passed.
+  Whatever node gets passed will be associated with the default mbox that this
+  function sets."
+  (memo/lru
+    (fn [node-obj mbox-name]
+      (let [default-mbox (mbox node-obj)]
+        (register-name default-mbox mbox-name)
+        default-mbox))))

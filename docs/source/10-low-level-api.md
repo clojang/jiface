@@ -2,14 +2,28 @@
 
 ## The JInterface Package in Clojang
 
-**NOTICE**: This document is a copy of the JInterface Users Guide, [a version of which](erlang/jinterface_users_guide.html) is provided in the published documentation for the Clojang project.
+**NOTICE**: This document is a copy of the JInterface Users Guide,
+[a version of which](erlang/jinterface_users_guide.html) is provided in the
+published documentation for the Clojang project.
 
-The [Jinterface](erlang/java/com/ericsson/otp/erlang/package-summary.html) package provides a set of tools for communication with Erlang processes. It can also be used for communication with other Java processes using the same package, as well as C processes using the Erl_Interface library.
+The [Jinterface](erlang/java/com/ericsson/otp/erlang/package-summary.html)
+package provides a set of tools for communication with Erlang processes. It
+can also be used for communication with other Java processes using the same
+package, as well as C processes using the Erl_Interface library.
 
-The set of classes in the package can be divided into two categories: those that provide the actual communication, and those that provide a Java representation of the Erlang data types. The latter are all subclasses of OtpErlangObject, and they are identified by the ``OtpErlang`` prefix.
+The set of classes in the package can be divided into two categories: those
+that provide the actual communication, and those that provide a Java
+representation of the Erlang data types. The latter are all subclasses of
+OtpErlangObject, and they are identified by the ``OtpErlang`` prefix.
 
-Since this package provides a mechanism for communicating with Erlang, message recipients can be Erlang processes or instances of com.ericsson.otp.erlang.OtpMbox, both of which are identified with pids and possibly registered names. When pids or mailboxes are mentioned as message senders or recipients in this section, it should assumed that even Erlang processes are included, unless specified otherwise. The classes in [Jinterface](erlang/java/com/ericsson/otp/erlang/package-summary.html) support the following:
-
+Since this package provides a mechanism for communicating with Erlang, message
+recipients can be Erlang processes or instances of
+com.ericsson.otp.erlang.OtpMbox, both of which are identified with pids and
+possibly registered names. When pids or mailboxes are mentioned as message
+senders or recipients in this section, it should assumed that even Erlang
+processes are included, unless specified otherwise. The classes in
+[Jinterface](erlang/java/com/ericsson/otp/erlang/package-summary.html) support
+the following:
 
 *    manipulation of data represented as Erlang data types
 *    conversion of data between Java and Erlang formats
@@ -27,8 +41,6 @@ In the following sections, these topics are described:
 *    linking to remote processes
 *    compiling your code for use with Jinterface
 *    tracing message flow
-
-http://oubiwann.github.io/clojang/current/clojang.jinterface.erlang.types.html#var-atom
 
 
 ## Mapping of Basic Erlang Types to the JVM
@@ -52,14 +64,31 @@ This section describes the mapping of Erlang basic types to JVM types.
 
 ## Special Mapping Issues
 
-The atoms ``true`` and ``false`` are special atoms, used as boolean values. The class [boolean](clojang/current/clojang.jinterface.erlang.boolean.html) can be used to represent these.
+The atoms ``true`` and ``false`` are special atoms, used as boolean values.
+The class  [boolean](clojang/current/clojang.jinterface.erlang.boolean.html)
+can be used to represent these.
 
-Lists in Erlang are also used to describe sequences of printable characters (strings). A convenience class [string](clojang/current/clojang.jinterface.erlang.string.html) is provided to represent Erlang strings.
+Lists in Erlang are also used to describe sequences of printable characters
+(strings). A convenience class
+[string](clojang/current/clojang.jinterface.erlang.string.html) is provided to
+represent Erlang strings.
 
 
 ## Nodes
 
-A node as defined by Erlang/OTP is an instance of the Erlang Runtime System, a virtual machine roughly equivalent to a JVM. Each node has a unique name in the form of an identifier composed partly of the hostname on which the node is running, e.g ``gurka@sallad.com``. Several such nodes can run on the same host as long as their names are unique. The class [node](clojang/current/clojang.jinterface.otp.nodes.html#var-NodeObject) represents an Erlang node. It is created with a name and optionally a port number on which it listens for incoming connections. Before creating an instance of [node](clojang/current/clojang.jinterface.otp.nodes.html#var-NodeObject), ensure that EPMD is running on the host machine. See the Erlang documentation for more information about EPMD. In this example, the host name is appended automatically to the identifier, and the port number is chosen by the underlying system:
+A node as defined by Erlang/OTP is an instance of the Erlang Runtime System, a
+virtual machine roughly equivalent to a JVM. Each node has a unique name in
+the form of an identifier composed partly of the hostname on which the node is
+running, e.g ``gurka@sallad.com``. Several such nodes can run on the same host
+as long as their names are unique. The class
+[node](clojang/current/clojang.jinterface.otp.nodes.html#var-NodeObject)
+represents an Erlang node. It is created with a name and optionally a port
+number on which it listens for incoming connections. Before creating an
+instance of [node](clojang/current/clojang.jinterface.otp.nodes.html#var-
+NodeObject), ensure that EPMD is running on the host machine. See the Erlang
+documentation for more information about EPMD. In this example, the host name
+is appended automatically to the identifier, and the port number is chosen by
+the underlying system:
 
 ```clojure
 => (require '[jiface.otp.nodes :as nodes])
@@ -71,11 +100,19 @@ nil
 
 ## Mailboxes
 
-Erlang processes running on an Erlang node are identified by process identifiers (pids) and, optionally, by registered names unique within the node. Each Erlang process has an implicit mailbox that is used to receive messages; the mailbox is identified with the pid of the process.
+Erlang processes running on an Erlang node are identified by process
+identifiers (pids) and, optionally, by registered names unique within the
+node. Each Erlang process has an implicit mailbox that is used to receive
+messages; the mailbox is identified with the pid of the process.
 
-JInterface provides a similar mechanism with the class [OtpMbox](erlang/java/com/ericsson/otp/erlang/OtpMbox.html), a mailbox that can be used to send and receive messages asynchronously. Each OtpMbox is identified with a unique pid and , optionally, a registered name unique within the [OtpMbox](erlang/java/com/ericsson/otp/erlang/OtpMbox.html).
+JInterface provides a similar mechanism with the class
+[OtpMbox](erlang/java/com/ericsson/otp/erlang/OtpMbox.html), a mailbox that
+can be used to send and receive messages asynchronously. Each OtpMbox is
+identified with a unique pid and , optionally, a registered name unique within
+the [OtpMbox](erlang/java/com/ericsson/otp/erlang/OtpMbox.html).
 
-Applications are free to create mailboxes as necessary. This is done as follows:
+Applications are free to create mailboxes as necessary. This is done as
+follows:
 
 ```clojure
 user=> (def mbox (nodes/create-mbox gurka))
@@ -91,16 +128,20 @@ user=> (def mbox (messaging/mbox gurka))
 #'user/mbox
 ```
 
-The mailbox created in the above example has no registered name, although it does have a pid. The pid can be obtained from the mailbox and included in messages sent from the mailbox, so that remote processes are able to respond.
+The mailbox created in the above example has no registered name, although it
+does have a pid. The pid can be obtained from the mailbox and included in
+messages sent from the mailbox, so that remote processes are able to respond.
 
-An application can register a name for a mailbox, either when the mailbox is initially created:
+An application can register a name for a mailbox, either when the mailbox is
+initially created:
 
 ```clojure
 user=> (def mbox (nodes/create-mbox gurka "server"))
 #'user/mbox
 ```
 
-or later on, if need be. You may either use the ``register-mbox`` function for the Node):
+or later on, if need be. You may either use the ``register-mbox`` function for
+the Node):
 
 ```clojure
 => (nodes/register-mbox gurka "server2" mbox)
@@ -114,14 +155,25 @@ or the ``register-name`` function for the Mbox:
 true
 ```
 
-Registered names are usually necessary in order to start communication, since it is impossible to know in advance the pid of a remote process. If a well-known name for one of the processes is chosen in advance and known by all communicating parties within an application, each mailbox can send an initial message to the named mailbox, which then can identify the sender pid.
+Registered names are usually necessary in order to start communication, since
+it is impossible to know in advance the pid of a remote process. If a well-
+known name for one of the processes is chosen in advance and known by all
+communicating parties within an application, each mailbox can send an initial
+message to the named mailbox, which then can identify the sender pid.
 
 
 ##  Connections
 
-It is not necessary to explicitly set up communication with a remote node. Simply sending a message to a mailbox on that node will cause the OtpNode to create a connection if one does not already exist. Once the connection is established, subsequent messages to the same node will reuse the same connection.
+It is not necessary to explicitly set up communication with a remote node.
+Simply sending a message to a mailbox on that node will cause the OtpNode to
+create a connection if one does not already exist. Once the connection is
+established, subsequent messages to the same node will reuse the same
+connection.
 
-It is possible to check for the existence of a remote node before attempting to communicate with it. Here we send a ping message to the remote node to see if it is alive and accepting connections. Paste the following function in your REPL:
+It is possible to check for the existence of a remote node before attempting
+to communicate with it. Here we send a ping message to the remote node to see
+if it is alive and accepting connections. Paste the following function in your
+REPL:
 
 ```clojure
 (defn print-liveliness [node other]
@@ -141,23 +193,42 @@ Mate, this node wouldn't go 'voom' if ...
 nil
 ```
 
-If the call to ``(nodes/ping ...)`` succeeds, a connection to the remote node has been established. Note that it is not necessary to ping remote nodes before communicating with them, but by using ping you can determine if the remote exists before attempting to communicate with it.
+If the call to ``(nodes/ping ...)`` succeeds, a connection to the remote node
+has been established. Note that it is not necessary to ping remote nodes
+before communicating with them, but by using ping you can determine if the
+remote exists before attempting to communicate with it.
 
-Connections are only permitted by nodes using the same security cookie. The cookie is a short string provided either as an argument when creating [node](clojang/current/clojang.jinterface.otp.nodes.html#var-NodeObject) objects, or found in the user's home directory in the file ``.erlang.cookie``. When a connection attempt is made, the string is used as part of the authentication process. If you are having trouble getting communication to work, use the trace facility (described later in this document) to show the connection establishment. A likely problem is that the cookies are different.
+Connections are only permitted by nodes using the same security cookie. The
+cookie is a short string provided either as an argument when creating
+[node](clojang/current/clojang.jinterface.otp.nodes.html#var-NodeObject)
+objects, or found in the user's home directory in the file ``.erlang.cookie``.
+When a connection attempt is made, the string is used as part of the
+authentication process. If you are having trouble getting communication to
+work, use the trace facility (described later in this document) to show the
+connection establishment. A likely problem is that the cookies are different.
 
-Connections are never broken explicitly. If a node fails or is closed, a connection may be broken however.
+Connections are never broken explicitly. If a node fails or is closed, a
+connection may be broken however.
 
 
 ##  Transport Factory
 
-All necessary connections are made using methods of [OtpTransportFactory](erlang/java/com/ericsson/otp/erlang/OtpTransportFactory.html) interface. Default OtpTransportFactory implementation is based on standard Socket class. User may provide custom transport factory as needed. See java doc for details.
+All necessary connections are made using methods of
+[OtpTransportFactory](erlang/java/com/ericsson/otp/erlang/OtpTransportFactory.html)
+interface. Default OtpTransportFactory implementation is based on standard
+Socket class. User may provide custom transport factory as needed. See java
+doc for details.
 
 
 ## Sending and Receiving Messages
 
-Messages sent with this package must be instances of [object](clojang/current/clojang.jinterface.erlang.object.html) or one of its subclasses. Message can be sent to processes or pids, either by specifying the pid of the remote, or its registered name and node.
+Messages sent with this package must be instances of
+[object](clojang/current/clojang.jinterface.erlang.object.html) or one of its
+subclasses. Message can be sent to processes or pids, either by specifying the
+pid of the remote, or its registered name and node.
 
-In this example, we create a message containing our own pid so the echo process can reply:
+In this example, we create a message containing our own pid so the echo
+process can reply:
 
 ```clojure
 => (require '[jiface.erlang.types :as types])
@@ -175,13 +246,15 @@ nil
         "{#Pid<gurka@mndltl01.1.0>,'hello, world'}"]
 ```
 
-You can also send messages from Erlang VMs to your ``node``'s mailbox named ``"echo"``. Before you do that, though, start listening in your Clojure REPL:
+You can also send messages from Erlang VMs to your ``node``'s mailbox named
+``"echo"``. Before you do that, though, start listening in your Clojure REPL:
 
 ```clojure
 => (messaging/receive mbox)
 ```
 
-Next, start up LFE (Lisp Flavoured Erlang) on the same machine with a short name:
+Next, start up LFE (Lisp Flavoured Erlang) on the same machine with a short
+name:
 
 ```bash
 $ /path/to/bin/lfe -sname lfe
@@ -196,7 +269,8 @@ Once you're in the REPL, you're ready to send a message:
 #(hej!)
 ```
 
-Looking at the Clojure REPL, you'll see that your ``receive `` call has finished and you now have some data:
+Looking at the Clojure REPL, you'll see that your ``receive `` call has
+finished and you now have some data:
 
 ```clojure
 #object[com.ericsson.otp.erlang.OtpErlangTuple 0x4a377f4e "{'hej!'}"]
@@ -220,7 +294,13 @@ TBD
 
 ## Remote Procedure Calls
 
-An Erlang node acting as a client to another Erlang node typically sends a request and waits for a reply. Such a request is included in a function call at a remote node and is called a remote procedure call. Remote procedure calls are supported through the [connection](http://oubiwann.github.io/clojang/current/clojang.jinterface.otp.connection.html#var-ConnectionObject) Clojure protocol. The following example shows how the ``connection`` protocol is used for remote procedure calls:
+An Erlang node acting as a client to another Erlang node typically sends a
+request and waits for a reply. Such a request is included in a function call
+at a remote node and is called a remote procedure call. Remote procedure calls
+are supported through the
+[connection](http://oubiwann.github.io/clojang/current/clojang.jinterface.otp.connection.html#var-ConnectionObject)
+Clojure protocol. The following example shows how the ``connection`` protocol
+is used for remote procedure calls:
 
 ```clojure
 (require '[jiface.otp.connection :as connection])

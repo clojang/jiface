@@ -18,7 +18,7 @@
 
 (defn ^OtpMbox mbox
   "A wrapper for the mbox-creation method on nodes. See
-  ``clojang.jinterface.otp.nodes/node``."
+  `clojang.jinterface.otp.nodes/node`."
   [^OtpNode node-instance]
   (.createMbox node-instance))
 
@@ -35,7 +35,7 @@
   processes or mailboxes, the sender pid is made available to the recipient
   of the message. When sending messages to other mailboxes, the recipient
   can only respond if the sender includes the pid as part of the message
-  contents. The sender can determine its own pid by calling ``(self sndr)``
+  contents. The sender can determine its own pid by calling `(self sndr)`
 
   Mailboxes can be named, either at creation or later. Messages can be sent
   to named mailboxes and named Erlang processes without knowing the pid
@@ -46,7 +46,7 @@
   Since this class was intended for communication with Erlang, all of the
   send methods take OtpErlangObject arguments. However this class can also
   be used to transmit arbitrary Java objects (as long as they implement one
-  of ``java.io.Serializable`` or ``java.io.Externalizable``) by
+  of `java.io.Serializable` or `java.io.Externalizable`) by
   encapsulating the object in a OtpErlangBinary.
 
   Messages to remote nodes are externalized for transmission, and as a
@@ -72,7 +72,8 @@
     "Close the given mailbox.")
   (equal? [^OtpMbox this ^OtpMbox other-obj]
     "Determine if two mailboxes are equal.")
-  (exit [^OtpMbox this reason] [^OtpMbox this recip-pid reason]
+  (exit [^OtpMbox this reason]
+        [^OtpMbox this recip-pid reason]
     "Close the given mailbox with a given reason or send an exit signal to
     a remote pid.")
   (get-name [^OtpMbox this]
@@ -84,31 +85,34 @@
     "Get the object hash code.")
   (link [^OtpMbox this]
     "Link to a remote mailbox or Erlang process.")
-  (ping [^OtpMbox this node-name] [^OtpMbox this node-name timeout]
+  (ping [^OtpMbox this node-name]
+        [^OtpMbox this node-name timeout]
     "Create a connection to a remote node.")
-  (receive [^OtpMbox this] [^OtpMbox this timeout]
+  (receive [^OtpMbox this]
+           [^OtpMbox this timeout]
     "Block until a message (Erlang object) arrives for this mailbox, or if
     a timeout is given, wait for a message until the timeout has been
     reached.")
-  (receive-buf [^OtpMbox this] [^OtpMbox this timeout]
+  (receive-buf [^OtpMbox this]
+               [^OtpMbox this timeout]
     "Block until a message (Erlang input stream) arrives for this mailbox, or
     if a timeout is given, wait for a message until the timeout has been
     reached.")
-  (receive-msg [^OtpMbox this] [^OtpMbox this timeout]
+  (receive-msg [^OtpMbox this]
+               [^OtpMbox this timeout]
     "Block until a message (OTP message) arrives for this mailbox, or
     if a timeout is given, wait for a message until the timeout has been
     reached.")
   (register-name [^OtpMbox this mbox-name]
     "Register or remove a name for this mailbox.")
   (self [^OtpMbox this]
-    "Get the identifying ``pid`` associated with the given mailbox.")
+    "Get the identifying `pid` associated with the given mailbox.")
   (get-pid [this]
-    "Alias for ``self``.")
-  (send [^OtpMbox this recip-pid msg] [^OtpMbox this mbox-name node-name msg]
-    "Send a message to a remote ``pid``, representing either another mailbox
+    "Alias for `self`.")
+  (send [^OtpMbox this recip-pid msg]
+        [^OtpMbox this mbox-name node-name msg]
+    "Send a message to a remote `pid`, representing either another mailbox
     or an Erlang process or to a remote node by mailbox name and node name.")
-  (! [^OtpMbox this recip-pid msg] [^OtpMbox this mbox-name node-name msg]
-    "An alias for ``send``")
   (unlink [^OtpMbox this recip-pid]
     "Remove a link to a remote mailbox or Erlang process.")
   (whereis [^OtpMbox this mbox-name]
@@ -201,19 +205,19 @@
   Message are sent using the Erlang external format (see separate
   documentation). When a message is received and delivered to the recipient
   mailbox, the body of the message is still in this external representation
-  until ``get-msg`` is called, at which point the message is decoded. A copy of
+  until `get-msg` is called, at which point the message is decoded. A copy of
   the decoded message is stored in the OtpMsg so that subsequent calls to
-  ``get-msg`` do not require that the message be decoded a second time."
+  `get-msg` do not require that the message be decoded a second time."
   (get-msg [^OtpMsg this]
     "Deserialize and return a new copy of the message contained in this
-    ``OtpMsg``.")
+    `OtpMsg`.")
   (get-recipient [^OtpMsg this]
-    "Get the name of the recipient for this message, if it is a ``regSendTag``
+    "Get the name of the recipient for this message, if it is a `regSendTag`
     message.")
   (get-recipient-name [^OtpMsg this]
     "Get the name of the recipient for this message.")
   (get-recipient-pid [^OtpMsg this]
-    "Get the Pid of the recipient for this message, if it is a ``sendTag``
+    "Get the Pid of the recipient for this message, if it is a `sendTag`
     message.")
   (get-sender-pid [^OtpMsg this]
     "Get the Pid of the sender of this message.")

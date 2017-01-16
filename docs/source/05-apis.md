@@ -179,29 +179,26 @@ that node; we'll be using the default one created by the agent). Given this,
 we're ready to start sending messages immediately:
 
 ```clj
-(require '[clojang.mbox :as mbox]
-         '[clojang.node :as node])
+(require '[clojang.core :as clojang :refer [! receive self]])
 
-                                                             ; XXX auto-retister :default so we don't need this line
-(mbox/register-name :echo)                                   ; XXX need to add support for arity-1
-(mbox/! :echo "clojang@host" [(mbox/self) "hello, world"])   ; XXX need to add support for arity-3
-(mbox/receive)
+(! [(self) "hello, world"])
+(receive)
 ```
 
 From LFE (started with `-sname lfe`):
 
 ```cl
 (clojang-lfe@host)> (register 'lferepl (self))
-(clojang-lfe@host)> (! #(echo clojang@host) `#(,(self) hej!))
+(clojang-lfe@host)> (! #(default clojang@host) `#(,(self) hej!))
 ```
 
 Then back in Clojure:
 
 ```clj
-(def data (mbox/receive))
+(def data (receive))
 (def lfe-pid (get data 0)
 (def lfe-msg (get data 1)
-(mbox/! :lferepl "clojang-lfe@host" [(mbox/self) "hello, world"]) ; XXX need to add support for arity-3
+(! :lferepl "clojang-lfe@host" [(self) "hello, world"])
 ```
 
 Then, back in LFE:

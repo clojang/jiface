@@ -195,9 +195,7 @@ From LFE (started with `-sname lfe`):
 Then back in Clojure:
 
 ```clj
-(def data (receive))
-(def lfe-pid (get data 0)
-(def lfe-msg (get data 1)
+(let [[pid msg] (receive)] (println "Got msg" msg))
 (! :lferepl "clojang-lfe@host" [(self) "hello, world"])
 ```
 

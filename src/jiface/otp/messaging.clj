@@ -126,13 +126,13 @@
     (.equals this other-obj))
   (exit
     ([this reason]
-     (if (string? reason)
-       (.exit this ^String reason)
-       (.exit this ^OtpErlangObject reason)))
+      (if (string? reason)
+        (.exit this ^String reason)
+        (.exit this ^OtpErlangObject reason)))
     ([this ^OtpErlangPid recip-pid reason]
-     (if (string? reason)
-       (.exit this recip-pid ^String reason)
-       (.exit this recip-pid ^OtpErlangObject reason))))
+      (if (string? reason)
+        (.exit this recip-pid ^String reason)
+        (.exit this recip-pid ^OtpErlangObject reason))))
   (get-name [this]
     (.getName this))
   (get-names [this]
@@ -141,27 +141,23 @@
     (.hashCode this))
   (link [this recip-pid]
     (.link this recip-pid))
-  ;; XXX put the ping with the default timeout in the mid-level API
-  (ping
-    ([this node-name]
-     (ping this node-name 1000))
-    ([this node-name timeout]
-     (.ping this node-name timeout)))
+  (ping [this node-name timeout]
+    (.ping this node-name timeout))
   (receive
     ([this]
-     (.receive this))
+      (.receive this))
     ([this timeout]
-     (.receive this timeout)))
+      (.receive this timeout)))
   (receive-buf
     ([this]
-     (.receiveBuf this))
+      (.receiveBuf this))
     ([this timeout]
-     (.receiveBuf this timeout)))
+      (.receiveBuf this timeout)))
   (receive-msg
     ([this]
-     (.receiveMsg this))
+      (.receiveMsg this))
     ([this timeout]
-     (.receiveMsg this timeout)))
+      (.receiveMsg this timeout)))
   (register-name [this mbox-name]
     (.registerName this mbox-name))
   (self [this]

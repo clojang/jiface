@@ -83,7 +83,7 @@
     mailbox.")
   (hash [^OtpMbox this]
     "Get the object hash code.")
-  (link [^OtpMbox this]
+  (link [^OtpMbox this recip-pid]
     "Link to a remote mailbox or Erlang process.")
   (ping [^OtpMbox this node-name]
         [^OtpMbox this node-name timeout]

@@ -1,4 +1,4 @@
-(defproject clojang/jiface "0.3.0-SNAPSHOT"
+(defproject clojang/jiface "0.3.0"
   :description "A Clojure-idiomatic wrapper around Erlang's JInterface"
   :url "https://github.com/clojang/jiface"
   :scm {

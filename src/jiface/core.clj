@@ -17,7 +17,9 @@
     :uint         "UInt"
     :ushort       "UShort"
     ;; OTP
+    :input-stream "InputStream"
     :local-node   "LocalNode"
+    :output-stream "OutputStream"
     ;; Everything else
     (string/capitalize (name type-key))))
 

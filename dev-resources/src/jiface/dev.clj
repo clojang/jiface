@@ -13,6 +13,7 @@
             [jiface.otp.messaging :as messaging]
             [jiface.otp :as otp]
             [jiface.otp.nodes :as nodes]
+            [jiface.otp.streams :as streams]
             [jiface.util :as util]
             [clojusc.twig :as twig])
   (:import [clojure.lang Keyword Reflector]

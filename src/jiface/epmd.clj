@@ -20,9 +20,12 @@
   This class contains only static methods, there are no constructors.")
 
 (defn lookup-names
-  ([] (OtpEpmd/lookupNames))
-  ([inet-addr] (OtpEpmd/lookupNames inet-addr))
-  ([inet-addr transport] (OtpEpmd/lookupNames inet-addr transport)))
+  ([]
+    (OtpEpmd/lookupNames))
+  ([inet-addr]
+    (OtpEpmd/lookupNames inet-addr))
+  ([inet-addr transport]
+    (OtpEpmd/lookupNames inet-addr transport)))
 
 (defn lookup-port
   "Determine what port a node listens for incoming connections on."

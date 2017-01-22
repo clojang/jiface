@@ -1,5 +1,9 @@
 (ns jiface.epmd
-  (:import [com.ericsson.otp.erlang OtpEpmd]))
+  (:import [com.ericsson.otp.erlang
+            AbstractNode
+            OtpEpmd
+            OtpLocalNode
+            OtpTransportFactory]))
 
 (defprotocol EpmdObject
   "Provides methods for registering, unregistering and looking up nodes with
@@ -22,28 +26,28 @@
 (defn lookup-names
   ([]
     (OtpEpmd/lookupNames))
-  ([inet-addr]
+  ([^java.net.InetAddress inet-addr]
     (OtpEpmd/lookupNames inet-addr))
-  ([inet-addr transport]
+  ([^java.net.InetAddress inet-addr ^OtpTransportFactory transport]
     (OtpEpmd/lookupNames inet-addr transport)))
 
 (defn lookup-port
   "Determine what port a node listens for incoming connections on."
-  [node]
+  [^AbstractNode node]
   (OtpEpmd/lookupPort node))
 
 (defn publish-port
   "Register with Epmd, so that other nodes are able to find and connect to
   it."
-  [node]
+  [^OtpLocalNode node]
   (OtpEpmd/publishPort node))
 
 (defn unpublish-port
   "Unregister from Epmd."
-  [node]
+  [^OtpLocalNode node]
   (OtpEpmd/unPublishPort node))
 
 (defn use-port
   "Set the port number to be used to contact the epmd process."
-  [port-num]
+  [^Integer port-num]
   (OtpEpmd/useEpmdPort port-num))

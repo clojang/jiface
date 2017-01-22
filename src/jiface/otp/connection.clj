@@ -3,7 +3,10 @@
   (:import [com.ericsson.otp.erlang
             AbstractConnection
             OtpConnection
-            OtpCookedConnection])
+            OtpCookedConnection
+            OtpErlangObject
+            OtpErlangPid
+            OtpOutputStream])
   (:refer-clojure :exclude [deliver send]))
 
 (defprotocol AbstractConnectionObject
@@ -53,8 +56,8 @@
    :get-trace-level (fn [this] (.getTraceLevel this))
    :connected? (fn [this] (.isConnected this))
    :run (fn [this] (.run this))
-   :set-flags (fn [this flag-integer] (.setFlags this flag-integer))
-   :set-trace-level (fn [this level-integer] (.setTraceLevel this level-integer))})
+   :set-flags (fn [this ^Integer flag] (.setFlags this flag))
+   :set-trace-level (fn [this ^Integer level] (.setTraceLevel this level))})
 
 (extend AbstractConnection
         AbstractConnectionObject
@@ -101,18 +104,22 @@
   (get-self [this]
     "Get information about the node at the local end of this connection.")
   (send [this dest msg]
-    "Send a message to a process on a remote node.")
-  (send-buf [this desg msg]
-    "Send a pre-encoded message to a process on a remote node.")
+    "Send a message to a process on a remote node. `dest` may be either a
+    `String` or an `OtpErlangPid`.")
+  (send-buf [this dest msg]
+    "Send a pre-encoded message to a process on a remote node. `dest` may be
+    either a `String` or an `OtpErlangPid`.")
   (send-rpc [this mod fun args]
-    "Send an RPC request to the remote Erlang node.")
+    "Send an RPC request to the remote Erlang node. `args` may be either
+    an array of `OtpErlangObject`s or an `OtpErlangList`.")
   (unlink [this dest-pid]
     "Remove a link between the local node and the specified process on the
     remote node."))
 
 (def connection-behaviour
-   {:exit (fn [this dest-pid reason] (.exit this dest-pid reason))
-    :link (fn [this dest-pid] (.link this dest-pid))
+   {:exit (fn [this ^OtpErlangPid dest-pid ^OtpErlangObject reason]
+            (.exit this dest-pid reason))
+    :link (fn [this ^OtpErlangPid dest-pid] (.link this dest-pid))
     :get-msg-count (fn [this] (.msgCount this))
     :get-peer (fn [this] (.peer this))
     :receive (fn ([this] (.receive this))
@@ -124,10 +131,11 @@
     :receive-rpc (fn ([this] (.receiveRPC this))
                      ([this timeout] (.receiveRPC this timeout)))
     :get-self (fn [this] (.self this))
-    :send (fn [this dest msg] (.send this dest msg))
-    :send-buf (fn [this desg msg] (.sendBuf this desg msg))
+    :send (fn [this dest ^OtpErlangObject msg] (.send this dest msg))
+    :send-buf (fn [this dest ^OtpOutputStream buf]
+                (.sendBuf this dest buf))
     :send-rpc (fn [this mod fun args] (.sendRPC this mod fun args))
-    :unlink (fn [this dest-pid] (.unlink this dest-pid))})
+    :unlink (fn [this ^OtpErlangPid dest-pid] (.unlink this dest-pid))})
 
 (extend OtpConnection AbstractConnectionObject abstract-connection-behaviour)
 (extend OtpConnection ConnectionObject connection-behaviour)

@@ -4,8 +4,10 @@
             [jiface.util :as util])
   (:import [com.ericsson.otp.erlang
             AbstractNode
+            OtpErlangObject
             OtpLocalNode
             OtpNode
+            OtpNodeStatus
             OtpMbox
             OtpPeer
             OtpSelf]))
@@ -15,12 +17,52 @@
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 (defn node
-  "Constructor for `OtpNode`."
+  "Constructor for `OtpNode`.
+
+  If one arg is passed, it must be of type `String`, representing the node
+  name.
+
+  If two args are passed, the first must be of type `String` and the
+  second must be either an `OtpTransportFactory` or a `String` representing
+  the Erlang cookie.
+
+  If three args are passed, they must be:
+
+  * node name (`String`)
+  * Erlang cookie (`String`)
+  * port number (`Integer`) or an `OtpTransportFactory`
+
+  If four args are passed, they must be:
+
+  * node name (`String`)
+  * Erlang cookie (`String`)
+  * port number (`Integer`)
+  * an `OtpTransportFactory`"
   [node-name & args]
   (apply #'otp/create (into [:node node-name] args)))
 
 (defn self
-  "Constructor for `OtpSelf`."
+  "Constructor for `OtpSelf`.
+
+  If one arg is passed, it must be of type `String`, representing the node
+  name.
+
+  If two args are passed, the first must be of type `String` and the
+  second must be either an `OtpTransportFactory` or a `String` representing
+  the Erlang cookie.
+
+  If three args are passed, they must be:
+
+  * node name (`String`)
+  * Erlang cookie (`String`)
+  * port number (`Integer`) or an `OtpTransportFactory`
+
+  If four args are passed, they must be:
+
+  * node name (`String`)
+  * Erlang cookie (`String`)
+  * port number (`Integer`)
+  * an `OtpTransportFactory`"
   [node-name & args]
   (apply #'otp/create (into [:self node-name] args)))
 
@@ -28,8 +70,14 @@
   "Constructor for `OtpPeer`.
 
   Represents a remote OTP node. It acts only as a container for the nodename
-  and other node-specific information that is needed by the OtpConnection
-  class"
+  and other node-specific information that is needed by the `OtpConnection`
+  class.
+
+  If one arg is passed, it must be of type `String`, representing the node
+  name.
+
+  If two args are passed, the first must be of type `String` and the
+  second must be an `OtpTransportFactory`."
   [node-name & args]
   (apply #'otp/create (into [:peer node-name] args)))
 
@@ -90,10 +138,10 @@
     (fn [this]
       (.cookie this))
    :create-transport
-    (fn [this addr port-num]
+    (fn [this ^java.net.InetAddress addr ^Integer port-num]
       (.createTransport this addr port-num))
    :create-server-transport
-    (fn [this port-num]
+    (fn [this ^Integer port-num]
       (.createServerTrasport this port-num))
    :get-hostname
     (fn [this]
@@ -102,7 +150,7 @@
     (fn [this]
       (.node this))
    :set-cookie
-    (fn [this value]
+    (fn [this ^String value]
       (.setCookie this value))
    :->str
     (fn [this]
@@ -186,33 +234,33 @@
       (.close this))
    :close-mbox
     (fn
-      ([this mbox-obj]
-        (.closeMbox this mbox-obj))
-      ([this mbox-obj reason]
-        (.closeMbox this mbox-obj reason)))
+      ([this ^OtpMbox mbox]
+        (.closeMbox this mbox))
+      ([this ^OtpMbox mbox ^OtpErlangObject reason]
+        (.closeMbox this mbox reason)))
    :create-mbox
     (fn
       ([this]
         (.createMbox this))
-      ([this mbox-name]
-        (.createMbox this mbox-name)))
+      ([this ^String name]
+        (.createMbox this name)))
    :get-names
     (fn [this]
       (.getNames this))
    :ping
-    (fn [this node-name timeout]
-      (.ping this node-name timeout))
+    (fn [this ^String node ^long timeout]
+      (.ping this node timeout))
    :register-mbox
-    (fn [this mbox-name mbox-obj]
-      (.registerName this mbox-name mbox-obj))
+    (fn [this ^String mbox-name ^OtpMbox mbox]
+      (.registerName this mbox-name mbox))
    :register-status-handler
-    (fn [this handler]
+    (fn [this ^OtpNodeStatus handler]
       (.registerStatusHandler this handler))
    :set-flags
-    (fn [this flags]
+    (fn [this ^Integer flags]
       (.setFlags this flags))
    :whereis
-    (fn [this mbox-name]
+    (fn [this ^String mbox-name]
       (.whereis this mbox-name))})
 
 (extend OtpNode AbstractNodeObject abstract-node-behaviour)
@@ -252,7 +300,7 @@
     (fn [this]
       (.accept this))
    :connect
-    (fn [this peer]
+    (fn [this ^OtpPeer peer]
       (.connect this peer))
    :get-pid
     (fn [this]
@@ -275,7 +323,7 @@
   singleton instance of the default node. (The Erlang JInterface docs
   recommend that only one node be run per JVM instance.)"
   (memo/lru
-    (fn [node-name]
+    (fn [^String node-name]
       (node node-name))))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

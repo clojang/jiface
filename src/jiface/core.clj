@@ -22,7 +22,7 @@
     (string/capitalize (name type-key))))
 
 (defn key->prefix
-  [key]
+  [^Keyword key]
   (case key
     :otp "Otp"
     :erlang "OtpErlang"))
@@ -39,7 +39,7 @@
   "Dynamically instantiates classes based upon a transformation function and
   a symbol used by the transformation function to create a class name that is
   ultimately resolvable."
-  [prefix [name-part & args]]
+  [^Keyword prefix [^Keyword name-part & args]]
   (Reflector/invokeConstructor
     (resolve (name->class prefix name-part))
     (into-array Object args)))

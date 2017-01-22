@@ -68,54 +68,54 @@
   an OtpErlangExit exception will be raised. Note that the exception is queued
   in the mailbox along with other messages, and will not be raised until it
   reaches the head of the queue and is about to be retrieved."
-  (close [^OtpMbox this]
+  (close [this]
     "Close the given mailbox.")
-  (equal? [^OtpMbox this ^OtpMbox other-obj]
+  (equal? [this ^OtpMbox other-obj]
     "Determine if two mailboxes are equal.")
-  (exit [^OtpMbox this reason]
-        [^OtpMbox this recip-pid reason]
+  (exit [this reason]
+        [this recip-pid reason]
     "Close the given mailbox with a given reason or send an exit signal to
     a remote pid.")
-  (get-name [^OtpMbox this]
+  (get-name [this]
     "Get the registered name of this mailbox.")
-  (get-names [^OtpMbox this]
+  (get-names [this]
     "Get a list of all known registered names on the same node as this
     mailbox.")
-  (hash [^OtpMbox this]
+  (hash [this]
     "Get the object hash code.")
-  (link [^OtpMbox this recip-pid]
+  (link [this recip-pid]
     "Link to a remote mailbox or Erlang process.")
-  (ping [^OtpMbox this node-name]
-        [^OtpMbox this node-name timeout]
+  (ping [this node-name]
+        [this node-name timeout]
     "Create a connection to a remote node.")
-  (receive [^OtpMbox this]
-           [^OtpMbox this timeout]
+  (receive [this]
+           [this timeout]
     "Block until a message (Erlang object) arrives for this mailbox, or if
     a timeout is given, wait for a message until the timeout has been
     reached.")
-  (receive-buf [^OtpMbox this]
-               [^OtpMbox this timeout]
+  (receive-buf [this]
+               [this timeout]
     "Block until a message (Erlang input stream) arrives for this mailbox, or
     if a timeout is given, wait for a message until the timeout has been
     reached.")
-  (receive-msg [^OtpMbox this]
-               [^OtpMbox this timeout]
+  (receive-msg [this]
+               [this timeout]
     "Block until a message (OTP message) arrives for this mailbox, or
     if a timeout is given, wait for a message until the timeout has been
     reached.")
-  (register-name [^OtpMbox this mbox-name]
+  (register-name [this mbox-name]
     "Register or remove a name for this mailbox.")
-  (self [^OtpMbox this]
+  (self [this]
     "Get the identifying `pid` associated with the given mailbox.")
   (get-pid [this]
     "Alias for `self`.")
-  (send [^OtpMbox this recip-pid msg]
-        [^OtpMbox this mbox-name node-name msg]
+  (send [this recip-pid msg]
+        [this mbox-name node-name msg]
     "Send a message to a remote `pid`, representing either another mailbox
     or an Erlang process or to a remote node by mailbox name and node name.")
-  (unlink [^OtpMbox this recip-pid]
+  (unlink [this recip-pid]
     "Remove a link to a remote mailbox or Erlang process.")
-  (whereis [^OtpMbox this mbox-name]
+  (whereis [this mbox-name]
     "Determine the pid corresponding to a registered name on this node."))
 
 (extend-type OtpMbox
@@ -204,20 +204,20 @@
   until `get-msg` is called, at which point the message is decoded. A copy of
   the decoded message is stored in the OtpMsg so that subsequent calls to
   `get-msg` do not require that the message be decoded a second time."
-  (get-msg [^OtpMsg this]
+  (get-msg [this]
     "Deserialize and return a new copy of the message contained in this
     `OtpMsg`.")
-  (get-recipient [^OtpMsg this]
+  (get-recipient [this]
     "Get the name of the recipient for this message, if it is a `regSendTag`
     message.")
-  (get-recipient-name [^OtpMsg this]
+  (get-recipient-name [this]
     "Get the name of the recipient for this message.")
-  (get-recipient-pid [^OtpMsg this]
+  (get-recipient-pid [this]
     "Get the Pid of the recipient for this message, if it is a `sendTag`
     message.")
-  (get-sender-pid [^OtpMsg this]
+  (get-sender-pid [this]
     "Get the Pid of the sender of this message.")
-  (get-type [^OtpMsg this]
+  (get-type [this]
     "Get the type marker from this message."))
 
 (extend-type OtpMsg
@@ -255,7 +255,7 @@
   Whatever node gets passed will be associated with the default mbox that this
   function sets."
   (memo/lru
-    (fn [node-obj mbox-name]
-      (let [default-mbox (mbox node-obj)]
+    (fn [^OtpNode node ^String mbox-name]
+      (let [default-mbox (mbox node)]
         (register-name default-mbox mbox-name)
         default-mbox))))

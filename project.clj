@@ -29,7 +29,7 @@
                  jiface.util]
     :metadata {:doc/format :markdown}}
   :profiles {
-    :uber {
+    :uberjar {
       :aot :all}
     :docs {
       :aot :all

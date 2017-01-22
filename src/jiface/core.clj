@@ -6,14 +6,6 @@
   (:import [clojure.lang Keyword Reflector]
            [com.ericsson.otp.erlang]))
 
-;; XXX support the following keys:
-;; [-d|-debug] [DbgExtra...] [-port No] [-daemon] [-relaxed_command_check]
-(defn start-epmd
-  "Start the Erlang Port Mapper Daemon external (OS) process needed by
-  JInterface for creating nodes and communicating with other nodes."
-  []
-  'TBD)
-
 (defn name->class-name
   "A helper function for use when creating Erlang class wrappers."
   [^Keyword type-key]

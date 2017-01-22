@@ -284,12 +284,85 @@ TBD
 
 ## Linking to Remote Processes
 
-TBD
+Erlang defines a concept known as linked processes. A link is an implicit
+connection between two processes that causes an exception to be raised in one
+of the processes if the other process terminates for any reason. Links are
+bidirectional: it does not matter which of the two processes created the link
+or which of the linked processes eventually terminates; an exception will be
+raised in the remaining process. Links are also idempotent: at most one link
+can exist between two given processes, only one operation is necessary to
+remove the link.
+
+`jiface` provides a similar mechanism. Also here, no distinction is made
+between mailboxes and Erlang processes. A link can be created to a remote
+mailbox or process when its pid is known:
+
+```clj
+(messaging/link (messaging/get-pid inbox))
+```
+
+The link can be removed by either of the processes in a similar manner:
+
+```clj
+(messaging/unlink (messaging/get-pid inbox))
+```
+
+In the cases when only a "remote" message box is provided (as above), the
+local node in the `link` and `unlink` function calls is assumed to be the
+default node.
+
+If the remote process terminates while the link is still in place, an
+exception will be raised on a subsequent call to `receive`. For example, in
+this case, the "remote" node's inbox pid to which we have linked is the
+`OtpMbox` instance stored in the `inbox` variable. The local node is our
+default node. Before unlinking `inbox`, if we instead call
+`(messaging/close inbox)` and then try to receive on the local node's default
+message box, we'll get an exception. Here's how to catch that exception:
+
+```clj
+(try
+  (messaging/receive
+    (messaging/default-mbox
+      (nodes/default-node "clojang@host")
+      "default"))
+  (catch OtpErlangExit ex
+    (println (format "Remote pid %s has terminated"
+                     (exceptions/get-pid ex)))))
+```
 
 
 ##  Using EPMD
 
-TBD
+`epmd` is the Erlang Port Mapper Daemon. Distributed Erlang nodes register with
+`epmd` on the localhost to indicate to other nodes that they exist and can
+accept connections. `epmd` maintains a register of node and port number
+information, and when a node wishes to connect to another node, it first
+contacts epmd in order to find out the correct port number to connect to.
+
+The basic interaction with EPMD is done through the functions in the
+`jiface.epmd` namespace.  Under the hood (at the JInterface level), nodes
+wishing to contact other nodes  first request information from `epmd` before a
+connection can be set up.
+
+When manually creating connections to Erlang nodes with operations such as
+`(nodes/connect ...)`, a connection is
+first made to `epmd` and, if the node is known, a connection is then made to
+the Erlang node.
+
+Clojang nodes can also register themselves with `epmd` if they want other
+nodes in the system to be able to find and connect to them. This is done by
+call  to `(epmd/publish-port ...)`.
+
+Be aware that on some systems (such as VxWorks), a failed node will not be
+detected by this mechanism since the operating system does not automatically
+close descriptors that were left open when the node failed. If a node has
+failed in this way, `epmd` will prevent you from registering a new node with
+the old name, since it thinks that the old name is still in use. In this case,
+you must unregister the name explicitly, by using `(epmd/unpublish-port ...)`.
+This will cause `epmd` to close the connection from the far end. Note that if
+the name was in fact still in use by a node, the results of this operation are
+unpredictable. Also, doing this does not cause the local end of the connection
+to close, so resources may be consumed.
 
 
 ## Remote Procedure Calls

@@ -21,7 +21,7 @@
 (def behaviour
   {:get-arity (fn [this] (.arity this))
    :get-size (fn [this] (.arity this))
-   :get-element (fn [this index] (.elementAt this index))
+   :get-element (fn [this ^Integer index] (.elementAt this index))
    :get-elements (fn [this] (.elements this))})
 
 (extend OtpErlangTuple object/ErlangObject object/behaviour)

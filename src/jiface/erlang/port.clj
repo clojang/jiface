@@ -15,7 +15,7 @@
 (def behaviour
   {:get-creation-num (fn [this] (.creation this))
    :get-id (fn [this] (.id this))
-   :get-node (fn [this] (.node this ))})
+   :get-node (fn [this] (.node this))})
 
 (extend OtpErlangPort object/ErlangObject object/behaviour)
 (extend OtpErlangPort ErlangPort behaviour)

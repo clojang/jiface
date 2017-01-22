@@ -2,7 +2,9 @@
   (:import [com.ericsson.otp.erlang
              OtpErlangObject
              OtpErlangExternalFun
-             OtpErlangFun])
+             OtpErlangFun
+             OtpInputStream
+             OtpOutputStream])
   (:refer-clojure :exclude [hash]))
 
 (defprotocol ErlangObject
@@ -29,11 +31,11 @@
 (def behaviour
   {:bind (fn [this binds] (.bind this binds))
    :clone (fn [this] (.clone this))
-   :decode (fn [this buff] (.decode this buff))
-   :encode (fn [this buff] (.encode this buff))
-   :equal? (fn [this other-erl-obj] (.equals this other-erl-obj))
+   :decode (fn [this ^OtpInputStream buff] (.decode this buff))
+   :encode (fn [this ^OtpOutputStream buff] (.encode this buff))
+   :equal? (fn [this ^java.lang.Object other] (.equals this other))
    :hash (fn [this] (.hashCode this))
-   :match (fn [this term binds] (.match this term binds))
+   :match (fn [this ^OtpErlangObject term binds] (.match this term binds))
    :->str (fn [this] (.toString this))})
 
 (extend OtpErlangObject ErlangObject behaviour)

@@ -1,7 +1,9 @@
 (ns jiface.erlang.map
   (:require [potemkin :refer [import-vars]]
             [jiface.erlang.object :as object])
-  (:import [com.ericsson.otp.erlang OtpErlangMap])
+  (:import [com.ericsson.otp.erlang
+            OtpErlangMap
+            OtpErlangObject])
   (:refer-clojure :exclude [get hash keys remove]))
 
 (defprotocol ErlangMap
@@ -21,13 +23,20 @@
     "Get all the values from the map as an array."))
 
 (def behaviour
-  {:get-arity (fn [this] (.arity this))
-   :->set (fn [this] (.entrySet this))
-   :get (fn [this key] (.get this key))
-   :get-keys (fn [this] (.keys this))
-   :put (fn [this key value] (.put this key value))
-   :remove (fn [this key] (.remove this key))
-   :get-values (fn [this] (.values this))})
+  {:get-arity (fn [this]
+                (.arity this))
+   :->set (fn [this]
+            (.entrySet this))
+   :get (fn [this ^OtpErlangObject key]
+          (.get this key))
+   :get-keys (fn [this]
+               (.keys this))
+   :put (fn [this ^OtpErlangObject key ^OtpErlangObject value]
+          (.put this key value))
+   :remove (fn [this ^OtpErlangObject key]
+             (.remove this key))
+   :get-values (fn [this]
+                 (.values this))})
 
 (extend OtpErlangMap object/ErlangObject object/behaviour)
 (extend OtpErlangMap ErlangMap behaviour)

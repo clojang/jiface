@@ -34,15 +34,15 @@
 
 (def behaviour
   {:get-arity (fn [this] (.arity this))
-   :get-element (fn [this index] (.elementAt this index))
+   :get-element (fn [this ^Integer index] (.elementAt this index))
    :get-elements (fn [this] (.elements this))
    :length (fn [this] (.arity this))
    :get-length (fn [this] (.arity this))
    :get-head (fn [this] (.getHead this))
    :get-last-tail (fn [this] (.getLastTail this))
-   :get-nth-tail (fn [this index] (.getNthTail this index))
+   :get-nth-tail (fn [this ^Integer  index] (.getNthTail this index))
    :get-tail (fn [this] (.getTail this))
-   :proper? (fn [this index] (.isProper this))
+   :proper? (fn [this] (.isProper this))
    :get-string-value (fn [this] (.stringValue this))})
 
 (extend OtpErlangList object/ErlangObject object/behaviour)

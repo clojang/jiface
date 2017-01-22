@@ -17,7 +17,7 @@
     "Get the serial number from the PID."))
 
 (def behaviour
-  {:compare-to (fn [this other] (.compareTo this other))
+  {:compare-to (fn [this ^java.lang.Object other] (.compareTo this other))
    :get-creation-num (fn [this] (.creation this))
    :get-id (fn [this] (.id this))
    :get-node (fn [this] (.node this ))

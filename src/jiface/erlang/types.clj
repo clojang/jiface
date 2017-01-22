@@ -50,10 +50,26 @@
   [num]
   (erlang/create :double num))
 
+(defn external-fun
+  "Erlang external function representation."
+  ([buf]
+    (erlang/create :external-fun buf))
+  ([mod func arity]
+    (erlang/create :external-fun mod func arity)))
+
 (defn float
   "See the docstring for ``#'types/double``."
   [num]
   (erlang/create :float num))
+
+(defn fun
+  "Erlang internal function representation."
+  ([buf]
+    (erlang/create :fun buf))
+  ([pid module index uniq free-vars]
+    (erlang/create :fun pid module index uniq free-vars))
+  ([pid module arity md5 index old-index uniq free-vars]
+    (erlang/create :fun pid module arity md5 index old-index uniq free-vars)))
 
 (defn int
   "See the docstring for ``#'types/long``."

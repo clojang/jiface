@@ -6,7 +6,7 @@
 
 (defprotocol ErlangPid
   (compare-to [this other]
-    "Get the arity of the map.")
+    "From `compareTo` in interface `java.lang.Comparable`.")
   (get-creation-num [this]
     "Get the creation number from the PID.")
   (get-id [this]

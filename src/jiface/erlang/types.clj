@@ -21,6 +21,12 @@
   [arg]
   (erlang/create :atom arg))
 
+(defn binary
+  "Constructor for an Erlang binary data type where `arg` can be a byte array,
+  a Java object, or an `OtpInputStream` buffer."
+  [arg]
+  (erlang/create :binary arg))
+
 (defn bitstr
   "Constructor for an Erlang bitstring data type."
   ([byte-array]

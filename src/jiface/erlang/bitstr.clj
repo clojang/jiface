@@ -3,7 +3,8 @@
             [jiface.erlang.object :as object]
             [jiface.util :as util])
   (:import [com.ericsson.otp.erlang
-             OtpErlangBistr])
+             OtpErlangBistr
+             OtpErlangBinary])
   (:refer-clojure :exclude [hash]))
 
 (defprotocol ErlangBitstr
@@ -26,6 +27,9 @@
 
 (extend OtpErlangBistr object/ErlangObject object/behaviour)
 (extend OtpErlangBistr ErlangBitstr behaviour)
+
+(extend OtpErlangBinary object/ErlangObject object/behaviour)
+(extend OtpErlangBinary ErlangBitstr behaviour)
 
 ;;; Aliases
 

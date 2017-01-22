@@ -20,7 +20,7 @@
   (case type-key
     ;; Types
     :external-fun "ExternalFun"
-    :list-sublist "List$SubList"
+    :sublist      "List$SubList"
     :object-hash  "Object$Hash"
     :uint         "UInt"
     :ushort       "UShort"

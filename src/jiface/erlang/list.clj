@@ -2,7 +2,9 @@
   (:require [potemkin :refer [import-vars]]
             [jiface.erlang.object :as object]
             [jiface.util :as util])
-  (:import [com.ericsson.otp.erlang OtpErlangList])
+  (:import [com.ericsson.otp.erlang
+             OtpErlangList
+             OtpErlangList$SubList])
   (:refer-clojure :exclude [hash]))
 
 (defprotocol ErlangList
@@ -45,6 +47,9 @@
 
 (extend OtpErlangList object/ErlangObject object/behaviour)
 (extend OtpErlangList ErlangList behaviour)
+
+(extend OtpErlangList$SubList object/ErlangObject object/behaviour)
+(extend OtpErlangList$SubList ErlangList behaviour)
 
 ;;; Aliases
 

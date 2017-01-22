@@ -153,6 +153,13 @@
   [str]
   (erlang/create :string str))
 
+(defn sublist
+  "See the docstring for ``#'types/list``."
+  ([]
+    (erlang/create :sublist))
+  ([args]
+    (erlang/create :sublist args)))
+
 (defn tuple
   "Provides a Java representation of Erlang tuples. Tuples are created from
   one or more arbitrary Erlang terms.

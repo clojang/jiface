@@ -13,8 +13,7 @@
     "Get the node name from the port."))
 
 (def behaviour
-  {:compare-to (fn [this other] (.compareTo this other))
-   :get-creation-num (fn [this] (.creation this))
+  {:get-creation-num (fn [this] (.creation this))
    :get-id (fn [this] (.id this))
    :get-node (fn [this] (.node this ))})
 

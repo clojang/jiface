@@ -127,14 +127,22 @@
   (erlang/create :pid node id serial creation))
 
 (defn port
-  "Provides a Java representation of an Erlang PID. PIDs represent Erlang
-  processes and consist of a nodename and a number of integers."
+  "Provides a Java representation of an Erlang Port."
   ([buf]
     (erlang/create :port buf))
   ([node id creation]
     (erlang/create :port node id creation))
   ([tag node id creation]
     (erlang/create :port tag node id creation)))
+
+(defn ref
+  "Provides a Java representation of an Erlang ref."
+  ([buf]
+    (erlang/create :ref buf))
+  ([node ids creation]
+    (erlang/create :ref node ids creation))
+  ([tag node ids creation]
+    (erlang/create :ref tag node ids creation)))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;; Error handling

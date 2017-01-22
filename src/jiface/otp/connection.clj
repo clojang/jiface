@@ -133,6 +133,8 @@
 (extend OtpConnection AbstractConnectionObject abstract-connection-behaviour)
 (extend OtpConnection ConnectionObject connection-behaviour)
 
+(extend OtpCookedConnection AbstractConnectionObject abstract-connection-behaviour)
+
 (defprotocol EpmdObject
   "Provides methods for registering, unregistering and looking up nodes with
   the Erlang portmapper daemon (Epmd). For each registered node, Epmd

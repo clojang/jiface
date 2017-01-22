@@ -3,7 +3,7 @@
             [jiface.erlang.object :as object]
             [jiface.util :as util])
   (:import [com.ericsson.otp.erlang
-             OtpErlangBistr
+             OtpErlangBitstr
              OtpErlangBinary])
   (:refer-clojure :exclude [hash]))
 
@@ -25,8 +25,8 @@
    :pad-bits (fn [this] (.pad_bits this))
    :get-size (fn [this] (.size this))})
 
-(extend OtpErlangBistr object/ErlangObject object/behaviour)
-(extend OtpErlangBistr ErlangBitstr behaviour)
+(extend OtpErlangBitstr object/ErlangObject object/behaviour)
+(extend OtpErlangBitstr ErlangBitstr behaviour)
 
 (extend OtpErlangBinary object/ErlangObject object/behaviour)
 (extend OtpErlangBinary ErlangBitstr behaviour)

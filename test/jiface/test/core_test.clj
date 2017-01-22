@@ -8,7 +8,7 @@
   (is (= "Boolean" (jiface/name->class-name :boolean)))
   (is (= "List" (jiface/name->class-name :list)))
   (is (= "ExternalFun" (jiface/name->class-name :external-fun)))
-  (is (= "List$SubList" (jiface/name->class-name :list-sublist)))
+  (is (= "List$SubList" (jiface/name->class-name :sublist)))
   (is (= "Object$Hash" (jiface/name->class-name :object-hash)))
   (is (= "UInt" (jiface/name->class-name :uint)))
   (is (= "UShort" (jiface/name->class-name :ushort)))
@@ -24,7 +24,7 @@
   (is (= 'com.ericsson.otp.erlang.OtpErlangExternalFun
          (jiface/name->class :erlang :external-fun)))
   (is (= 'com.ericsson.otp.erlang.OtpErlangList$SubList
-         (jiface/name->class :erlang :list-sublist)))
+         (jiface/name->class :erlang :sublist)))
   (is (= 'com.ericsson.otp.erlang.OtpErlangObject$Hash
          (jiface/name->class :erlang :object-hash)))
   (is (= 'com.ericsson.otp.erlang.OtpErlangUInt

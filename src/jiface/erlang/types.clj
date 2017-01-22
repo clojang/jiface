@@ -21,6 +21,13 @@
   [arg]
   (erlang/create :atom arg))
 
+(defn bitstr
+  "Constructor for an Erlang bitstring data type."
+  ([byte-array]
+    (erlang/create :bitstr byte-array))
+  ([byte-array pad-bits]
+    (erlang/create :bitstr byte-array pad-bits)))
+
 (defn boolean
   "Constructor for an Erlang boolean (atom) data type."
   [bool]

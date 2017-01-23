@@ -9,7 +9,7 @@
             [jiface.core :as jiface]
             [jiface.erlang :as erlang]
             [jiface.erlang.types :as types]
-            [jiface.exception :as exceptions]
+            [jiface.exceptions :as exceptions]
             [jiface.otp.connection :as connection]
             [jiface.otp.messaging :as messaging]
             [jiface.otp :as otp]

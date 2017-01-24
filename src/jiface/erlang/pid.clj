@@ -20,7 +20,7 @@
   {:compare-to (fn [this ^java.lang.Object other] (.compareTo this other))
    :get-creation-num (fn [this] (.creation this))
    :get-id (fn [this] (.id this))
-   :get-node (fn [this] (.node this ))
+   :get-node (fn [this] (.node this))
    :get-serial-num (fn [this] (.serial this))})
 
 (extend OtpErlangPid object/ErlangObject object/behaviour)

@@ -11,15 +11,17 @@
   [^Keyword type-key]
   (case type-key
     ;; Types
-    :external-fun "ExternalFun"
-    :sublist      "List$SubList"
-    :object-hash  "Object$Hash"
-    :uint         "UInt"
-    :ushort       "UShort"
+    :external-fun            "ExternalFun"
+    :sublist                 "List$SubList"
+    :object-hash             "Object$Hash"
+    :uint                    "UInt"
+    :ushort                  "UShort"
     ;; OTP
-    :input-stream "InputStream"
-    :local-node   "LocalNode"
-    :output-stream "OutputStream"
+    :input-stream            "InputStream"
+    :local-node              "LocalNode"
+    :output-stream           "OutputStream"
+    :server-socket-transport "ServerSocketTransport"
+    :socket-transport        "SocketTransport"
     ;; Everything else
     (string/capitalize (name type-key))))
 

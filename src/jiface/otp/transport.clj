@@ -1,5 +1,6 @@
 (ns jiface.otp.transport
-  (:require [jiface.otp :as otp])
+  (:require [jiface.otp :as otp]
+            [jiface.util :as util])
   (:import [com.ericsson.otp.erlang
             OtpServerSocketTransport
             OtpSocketTransport
@@ -29,10 +30,12 @@
 ;;; OTP protocols
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+(defprotocol TransportObject
+  (close [this port]
+    ""))
+
 (defprotocol ServerTransportObject
   (accept [this]
-    "")
-  (close [this port]
     "")
   (get-local-port [this]
     ""))
@@ -49,12 +52,13 @@
       (.getLocalPort this))})
 
 (extend OtpServerSocketTransport
+        TransportObject
+        server-transport-behaviour)
+(extend OtpServerSocketTransport
         ServerTransportObject
         server-transport-behaviour)
 
 (defprotocol SocketTransportObject
-  (close [this port]
-    "")
   (get-input-stream [this]
     "")
   (get-output-stream [this]
@@ -71,7 +75,12 @@
      (fn [this]
       (.getOutputStream this))})
 
-(extend OtpSocketTransport SocketTransportObject socket-transport-behaviour)
+(extend OtpSocketTransport
+        TransportObject
+        socket-transport-behaviour)
+(extend OtpSocketTransport
+        SocketTransportObject
+        socket-transport-behaviour)
 
 (defprotocol TransportFactory
   "Represents the default socket-based transport factory."
@@ -88,7 +97,9 @@
     (fn [this addr ^Integer port]
       (.createTransport this addr port))})
 
-(extend OtpSocketTransportFactory TransportFactory transport-factory-behaviour)
+(extend OtpSocketTransportFactory
+        TransportFactory
+        transport-factory-behaviour)
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;; Error handling

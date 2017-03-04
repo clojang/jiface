@@ -12,11 +12,11 @@
     [org.clojure/core.match "0.3.0-alpha4"]
     [org.clojure/core.memoize "0.5.9"]
     [clojang/erlang-jinterface "1.7.1"]
-    [clojusc/twig "0.3.0"]
+    [clojusc/twig "0.3.1"]
     [dire "0.5.4"]
     [potemkin "0.4.3"]]
   :plugins [
-    [lein-codox "0.10.2"]
+    [lein-codox "0.10.3"]
     [lein-simpleton "1.3.0"]]
   :repl-options {:init-ns jiface.dev}
   :codox {

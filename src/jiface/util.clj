@@ -4,15 +4,6 @@
   (:import [clojure.lang Reflector]
            [com.ericsson.otp.erlang]))
 
-(defn get-hostname
-  "Get the hostname for the machine that this JVM is running on.
-
-  Uses the `java.net.InetAddress` methods `getLocalHost` and
-  `getHostName`."
-  []
-  (-> (java.net.InetAddress/getLocalHost)
-      (.getHostName)))
-
 (defn add-err-handler
   "A wrapper for generating a specific dire error handler."
   ([handled-fn excep]

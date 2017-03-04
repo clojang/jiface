@@ -12,6 +12,7 @@ CLOJURE_VER := $(subst ], , $(word 3, $(CLOJURE_DEP)))
 JAR := $(PROJ)-$(VERSION).jar
 UBERJAR := $(PROJ)-$(VERSION)-standalone.jar
 LOCAL_MAVEN := ~/.m2/repository
+REPO = $(shell git config --get remote.origin.url)
 
 show-versions:
 	@echo Project: $(PROJ), $(PROJ_VERSION)
@@ -20,6 +21,6 @@ show-versions:
 	@echo Clojure: $(CLOJURE_VER)
 	@echo lein/JVM: $(shell lein version)
 
-include resources/make/code.mk
-include resources/make/test.mk
-include resources/make/docs.mk
+include dev-resources/make/code.mk
+include dev-resources/make/test.mk
+include dev-resources/make/docs.mk

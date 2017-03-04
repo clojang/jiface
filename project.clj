@@ -22,8 +22,8 @@
   :codox {
     :project {:name "jiface"}
     :themes [:rdash]
-    :output-path "docs/master/current"
-    :doc-paths ["docs/source"]
+    :output-path "docs/current"
+    :doc-paths ["resources/docs"]
     :namespaces [#"^jiface\.erlang"
                  #"^jiface\.otp"
                  jiface.util]

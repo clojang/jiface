@@ -27,11 +27,12 @@ This project provides a solution to the Clojure
 While JInterface is an invaluable tool for projects that need to have JVM and
 Erlang VM languages communicating with each other, it is rather verbose and
 cumbersome to do so in Clojure. The syntactical burden is often enough to
-discourage experimentation and play -- essential ingredients for innovation.
-The primary goal of jiface is to make it not only easy to write for the
-Clojure/Erlang interface, but fun as well.
+discourage experimentation and play (essential ingredients for innovation).
+The primary goal of jiface is to make it easier to write Clojure programs that
+need to communicate with Erlang nodes (including LFE and Elixir).
 
-For details on the `jiface` API and its relation to JInterface and Clojang, see
+For a comparison of JInterface, the low-level `jiface` API, the the high-level
+Clojang API, see
 [the APIs summary](http://clojang.github.io/jiface/current/05-apis.html) page.
 
 
@@ -71,14 +72,17 @@ jiface``.jar`` file. As such, to build everything -- LFE, Erlang, and Clojure
 
 * ``rebar3 compile``
 
-If you wish to build your own JInterface ``.jar`` file and not use the one we've uploaded to Clojars, you'll need to follow the instructions given in the documentation here:
+If you wish to build your own JInterface ``.jar`` file and not use the one
+we've uploaded to Clojars, you'll need to follow the instructions given in the
+documentation here:
 
 * [Building JInterface for Clojure](http://clojang.github.io/jiface/current/80-building-jinterface.html)
 
 
 ## Documentation [&#x219F;](#contents)
 
-Project documentation, including jiface API reference docs, Javadocs for JInterface, and the Erlang JInterface User's Guide, is available here:
+Project documentation, including jiface API reference docs, Javadocs for
+JInterface, and the Erlang JInterface User's Guide, is available here:
 
 * [http://clojang.github.io/jiface/current/](http://clojang.github.io/jiface/current/)
 
@@ -90,18 +94,22 @@ Of particular note:
 
 High-level API docs:
 
-* [Clojang User's Guide](http://clojang.github.io/clojang/current/10-low-level.html) - An adaptation of the *jiface User's Guide* for the mid-level idiomatic Clojure API
+* [Clojang User's Guide](http://clojang.github.io/clojang/current/10-low-level.html) -
+  An adaptation of the *jiface User's Guide* for the mid-level idiomatic Clojure API
 
 
 ## Usage [&#x219F;](#contents)
 
-Using jiface in a project is just like any other Clojure library. Just add the following to the ``:dependencies`` in your ``project.clj`` file:
+Using jiface in a project is just like any other Clojure library. Just add the
+following to the ``:dependencies`` in your ``project.clj`` file:
 
 [![Clojars Project](https://img.shields.io/clojars/v/clojang/jiface.svg)](https://clojars.org/clojang/jiface)
 
-For the Erlang/LFE side of things, you just need to add the Github URL to your ``rebar.config`` file, as with any other rebar-based Erlang VM project.
+For the Erlang/LFE side of things, you just need to add the Github URL to your
+`rebar.config` file, as with any other rebar-based Erlang VM project.
 
-As for actual code usage, the documentation section provides links to developer guides and API references, but below is quick example.
+As for actual code usage, the documentation section provides links to
+developer guides and API references, but below is quick example.
 
 Start LFE in distributed mode:
 
@@ -190,9 +198,12 @@ This will not only run Erlang and LFE unit tests, it also runs the Clojure unit 
 
 **Clojure Test Selectors**
 
-If you would like to be more selective in the types of jiface tests which get run, you may be interested in reading this section.
+If you would like to be more selective in the types of jiface tests which get
+run, you may be interested in reading this section.
 
-The jiface tests use metadata annotations to indicate whether they are unit, system, or integration tests. to run just the unit tests, you can do any one of the following, depending upon what you're used to:
+The jiface tests use metadata annotations to indicate whether they are unit,
+system, or integration tests. to run just the unit tests, you can do any one
+of the following, depending upon what you're used to:
 
 ```bash
 $ lein test
@@ -223,7 +234,10 @@ This is what is used by the ``rebar3`` configuration to run the jiface tests.
 
 ## Erlang, Clojure, and JInterface [&#x219F;](#contents)
 
-If you are interested in building your own JInterface ``.jar`` file for use with a Clojure project, be sure fo check out the [jinterface-builder Clojang project](https://github.com/clojang/jinterface-builder). The project ``README`` has everything you need to get started.
+If you are interested in building your own JInterface ``.jar`` file for use
+with a Clojure project, be sure fo check out the
+[jinterface-builder Clojang project](https://github.com/clojang/jinterface-builder).
+The project `README` has everything you need to get started.
 
 
 ## License [&#x219F;](#contents)

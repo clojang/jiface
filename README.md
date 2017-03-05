@@ -22,12 +22,12 @@
 
 ## Introduction [&#x219F;](#contents)
 
-This project provides a solution to the
-[aesthetic problem of JInterface](https://github.com/clojang/clojang/wiki/Example:-JInterface-in-Clojure).
+This project provides a solution to the Clojure
+[JInterface Problem](https://github.com/clojang/jiface/wiki/The-JInterface-Problem).
 While JInterface is an invaluable tool for projects that need to have JVM and
 Erlang VM languages communicating with each other, it is rather verbose and
-cumbersom to do so in Clojure. The syntatical burden is often enough to
-discourage experimentation and play -- essential ingrediates for innovation.
+cumbersome to do so in Clojure. The syntactical burden is often enough to
+discourage experimentation and play -- essential ingredients for innovation.
 The primary goal of jiface is to make it not only easy to write for the
 Clojure/Erlang interface, but fun as well.
 
@@ -52,11 +52,11 @@ The default (and tested) version combinations are as follows:
 | jiface | JInterface | Erlang Release | Erlang Version (erts) |
 |--------|------------|----------------|-----------------------|
 | 0.4.0  | 1.7.1      | 19.2           | 8.2                   |
-| 0.3.0  | "          | "              | "                     |
-| 0.2.0  | "          | "              | "                     |
-| "      | "          | 19.1           | 8.1                   |
+| 0.3.0  | 1.7.1      | 19.2           | 8.2                   |
+| 0.2.0  | 1.7.1      | 19.2           | 8.2                   |
+| 0.2.0  | 1.7.1      | 19.1           | 8.1                   |
 | 0.1.0  | 1.6.1      | 18.3           | 7.3                   |
-| "      | "          | 18.2           | 7.2                   |
+| 0.1.0  | 1.6.1      | 18.2           | 7.2                   |
 
 While other version combination may work (and existing versions may be updated
 to work with different onces), those are the only ones which are supported.
@@ -71,22 +71,22 @@ jiface``.jar`` file. As such, to build everything -- LFE, Erlang, and Clojure
 
 * ``rebar3 compile``
 
-If you wish to build your own JInterface ``.jar`` file and not use the one we've uploaded to Clojars, you'll need to follow the instrucations given in the documentation here:
+If you wish to build your own JInterface ``.jar`` file and not use the one we've uploaded to Clojars, you'll need to follow the instructions given in the documentation here:
 
 * [Building JInterface for Clojure](http://clojang.github.io/jiface/current/80-building-jinterface.html)
 
 
 ## Documentation [&#x219F;](#contents)
 
-Project documentation, including jiface API reference docs, Javadocs for JInterface, and the Erlang JInterface User's Guide, is availble here:
+Project documentation, including jiface API reference docs, Javadocs for JInterface, and the Erlang JInterface User's Guide, is available here:
 
 * [http://clojang.github.io/jiface/current/](http://clojang.github.io/jiface/current/)
 
 Of particular note:
 
-* [jiface User's Guide](http://clojang.github.io/jiface/current/10-low-level-api.html) - A translation of the *JInterface User's Guide* (Erlang documantaion) from Java into Clojure
+* [jiface User's Guide](http://clojang.github.io/jiface/current/10-low-level-api.html) - A translation of the *JInterface User's Guide* (Erlang documentation) from Java into Clojure
 * [JInterface User's Guide](http://clojang.github.io/jiface/current/erlang/jinterface_users_guide.html) - The JInterface documentation provided in Erlang distributions
-* [Jinterface Javadocs](http://clojang.github.io/jiface/current/erlang/java) - Javadoc-generated API documentation built from the JInterface source code
+* [JInterface Javadocs](http://clojang.github.io/jiface/current/erlang/java) - Javadoc-generated API documentation built from the JInterface source code
 
 High-level API docs:
 
@@ -209,7 +209,7 @@ $ lein test :system
 And, similarly, just the integration tests:
 
 ```bash
-$ lein test :integtration
+$ lein test :integration
 ```
 
 To run everything:

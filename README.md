@@ -31,8 +31,8 @@ discourage experimentation and play (essential ingredients for innovation).
 The primary goal of jiface is to make it easier to write Clojure programs that
 need to communicate with Erlang nodes (including LFE and Elixir).
 
-For a comparison of JInterface, the low-level `jiface` API, the the high-level
-Clojang API, see
+For a comparison of JInterface, the low-level `jiface` API, and the high-level
+`clojang` API, see
 [the APIs summary](http://clojang.github.io/jiface/current/05-apis.html) page.
 
 

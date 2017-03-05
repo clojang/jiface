@@ -1,7 +1,8 @@
 (ns jiface.test.otp.nodes-test
   (:require [clojure.test :refer :all]
             [jiface.otp.nodes :as nodes]
-            [jiface.util :as util])
+            [jiface.util :as util]
+            [trifl.net :as net])
   (:import [com.ericsson.otp.erlang]))
 
 (deftest ^:unit node-constructor-test
@@ -14,7 +15,7 @@
 
 (deftest ^:unit node-test
   (let [my-name "mynode"
-        hostname (util/get-hostname)
+        hostname (net/get-local-hostname)
         my-fullhost (str my-name "@" hostname)
         my-node (nodes/node my-name)]
     (is (= my-fullhost (nodes/->str my-node)))

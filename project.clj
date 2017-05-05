@@ -33,7 +33,7 @@
       :aot :all}
     :docs {
       :aot :all
-      :dependencies [[codox-theme-rdash "0.1.1"]]}
+      :dependencies [[codox-theme-rdash "0.1.2"]]}
     :testing {
       :aot :all
       :dependencies [
@@ -42,7 +42,7 @@
         [lein-ancient "0.6.10"]
         [jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]
         [lein-bikeshed "0.4.1"]
-        [lein-kibit "0.1.2" :exclusions [org.clojure/clojure]]
+        [lein-kibit "0.1.4" :exclusions [org.clojure/clojure]]
         [venantius/yagni "0.1.4"]]
       :source-paths ["test"]
       :test-selectors {

@@ -15,13 +15,10 @@
     [clojusc/twig "0.3.1"]
     [dire "0.5.4"]
     [potemkin "0.4.3"]]
-  :plugins [
-    [lein-codox "0.10.3"]
-    [lein-simpleton "1.3.0"]]
   :repl-options {:init-ns jiface.dev}
   :codox {
     :project {:name "jiface"}
-    :themes [:rdash]
+    :themes [:clojang]
     :output-path "docs/current"
     :doc-paths ["resources/docs"]
     :namespaces [#"^jiface\.erlang"
@@ -33,7 +30,10 @@
       :aot :all}
     :docs {
       :aot :all
-      :dependencies [[codox-theme-rdash "0.1.2"]]}
+      :dependencies [[clojang/codox-theme "0.2.0-SNAPSHOT"]]
+      :plugins [
+        [lein-codox "0.10.3"]
+        [lein-simpleton "1.3.0"]]}
     :testing {
       :aot :all
       :dependencies [

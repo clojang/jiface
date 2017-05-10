@@ -6,14 +6,13 @@ CURRENT = $(DOCS_DIR)/current
 ERL_DOCS_SRC = ~/Dropbox/Docs/Erlang/19.2
 ERL_DOCS_DIR = $(CURRENT)/erlang
 JAVA_DOCS_DIR = $(ERL_DOCS_DIR)/java
-DOCS_GIT_HACK = $(DOCS_DIR)/.git
 REMOTE_DOCS_HOST = http://clojang.github.io/jiface/current/java
 LOCAL_DOCS_HOST = localhost
 LOCAL_DOCS_PORT = 5099
 
-devdocs: local-docs
+devdocs:
 	@echo "\nRunning docs server on http://$(LOCAL_DOCS_HOST):$(LOCAL_DOCS_PORT)..."
-	@lein simpleton $(LOCAL_DOCS_PORT) file :from $(CURRENT)
+	@lein with-profile +docs simpleton $(LOCAL_DOCS_PORT) file :from $(CURRENT)
 
 docs: clean-docs pre-docs clojang-docs java-docs erl-docs
 
@@ -44,7 +43,7 @@ erl-docs:
 	$(CURRENT)
 
 clojang-docs:
-	@lein with-profile docs codox
+	@lein with-profile +docs codox
 
 clean-docs:
 	@rm -rf $(CURRENT)

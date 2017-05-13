@@ -12,7 +12,7 @@
     [org.clojure/core.match "0.3.0-alpha4"]
     [org.clojure/core.memoize "0.5.9"]
     [clojang/erlang-jinterface "1.7.1"]
-    [clojusc/twig "0.3.1"]
+    [clojusc/twig "0.3.2-SNAPSHOT"]
     [dire "0.5.4"]
     [potemkin "0.4.3"]]
   :repl-options {:init-ns jiface.dev}

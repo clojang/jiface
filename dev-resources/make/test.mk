@@ -1,11 +1,15 @@
 check:
-	@lein with-profile +testing test :unit
+	@lein with-profile +test test :unit
 
 check-system:
-	@lein with-profile +testing test :system
+	@lein with-profile +test test :system
 
 check-integration:
-	@lein with-profile +testing test :integration
+	@lein with-profile +test test :integration
 
-check-all:
-	@lein with-profile +testing test :all
+check-deps:
+	@lein with-profile +test ancient
+	@lein with-profile +test ancient check-profiles
+
+check-all: check-deps
+	@lein with-profile +test test :all

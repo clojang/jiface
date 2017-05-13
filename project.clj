@@ -34,7 +34,7 @@
       :plugins [
         [lein-codox "0.10.3"]
         [lein-simpleton "1.3.0"]]}
-    :testing {
+    :test {
       :aot :all
       :dependencies [
         [clojusc/trifl "0.1.0-SNAPSHOT"]]

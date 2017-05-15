@@ -8,8 +8,7 @@ check-integration:
 	@lein with-profile +test test :integration
 
 check-deps:
-	@lein with-profile +test ancient
-	@lein with-profile +test ancient check-profiles
+	@lein with-profile +test do ancient check :all
 
 check-all: check-deps
 	@lein with-profile +test test :all

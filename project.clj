@@ -30,7 +30,7 @@
       :aot :all}
     :docs {
       :aot :all
-      :dependencies [[clojang/codox-theme "0.2.0-SNAPSHOT"]]
+      :dependencies [[clojang/codox-theme "0.1.0-SNAPSHOT"]]
       :plugins [
         [lein-codox "0.10.3"]
         [lein-simpleton "1.3.0"]]}
@@ -42,7 +42,7 @@
         [lein-ancient "0.6.10"]
         [jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]
         [lein-bikeshed "0.4.1"]
-        [lein-kibit "0.1.4" :exclusions [org.clojure/clojure]]
+        [lein-kibit "0.1.5" :exclusions [org.clojure/clojure]]
         [venantius/yagni "0.1.4"]]
       :source-paths ["test"]
       :test-selectors {
@@ -53,6 +53,6 @@
     :dev {
       :dependencies [
         [org.clojure/math.numeric-tower "0.0.4"]
-        [org.clojure/tools.namespace "0.2.11"]]
+        [org.clojure/tools.namespace "0.2.10"]]
       :source-paths ["dev-resources/src"]
       :aot [clojure.tools.logging.impl]}})

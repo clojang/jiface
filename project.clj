@@ -8,13 +8,13 @@
     :name "Apache License, Version 2.0"
     :url "http://www.apache.org/licenses/LICENSE-2.0"}
   :dependencies [
-    [org.clojure/clojure "1.8.0"]
+    [org.clojure/clojure "1.9.0"]
     [org.clojure/core.match "0.3.0-alpha4"]
-    [org.clojure/core.memoize "0.5.9"]
+    [org.clojure/core.memoize "0.7.1"]
     [clojang/erlang-jinterface "1.7.1"]
     [clojusc/twig "0.3.2"]
     [dire "0.5.4"]
-    [potemkin "0.4.3"]]
+    [potemkin "0.4.5"]]
   :repl-options {:init-ns jiface.dev}
   :codox {
     :project {:name "jiface"}
@@ -32,13 +32,13 @@
       :aot :all
       :dependencies [[clojang/codox-theme "0.1.0-SNAPSHOT"]]
       :plugins [
-        [lein-codox "0.10.3"]
+        [lein-codox "0.10.4"]
         [lein-simpleton "1.3.0"]]}
     :lint {
       :source-paths ^:replace ["src"]
       :test-paths ^:replace []
       :plugins [
-        [jonase/eastwood "0.2.5"]
+        [jonase/eastwood "0.2.8"]
         [lein-ancient "0.6.15"]
         [lein-bikeshed "0.5.1"]
         [lein-kibit "0.1.6"]

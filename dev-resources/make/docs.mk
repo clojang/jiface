@@ -21,7 +21,7 @@ pre-docs:
 	@lein clean
 
 java-docs:
-	@javadoc -public \
+	javadoc -public \
 	         -use \
 	         -version \
 	         -author \
@@ -32,11 +32,11 @@ java-docs:
 
 erl-docs:
 	@mkdir -p $(ERL_DOCS_DIR) $(DOCS_DIR)/doc
-	@cp \
-	resources/html/users_guide.html \
-	resources/html/jinterface_users_guide.html \
+	cp \
+	$(ERL_DOCS_SRC)/lib/jinterface-$(JINTERFACE_VER)/doc/html/users_guide.html \
+	$(ERL_DOCS_SRC)/lib/jinterface-$(JINTERFACE_VER)/doc/html/jinterface_users_guide.html \
 	$(ERL_DOCS_DIR)
-	@cp -r \
+	cp -r \
 	$(ERL_DOCS_SRC)/doc/js \
 	$(ERL_DOCS_SRC)/doc/otp_doc.css \
 	$(ERL_DOCS_SRC)/doc/erlang-logo.png \

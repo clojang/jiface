@@ -12,7 +12,7 @@
     [org.clojure/core.match "0.3.0-alpha4"]
     [org.clojure/core.memoize "0.5.9"]
     [clojang/erlang-jinterface "1.7.1"]
-    [clojusc/twig "0.3.2-SNAPSHOT"]
+    [clojusc/twig "0.3.2"]
     [dire "0.5.4"]
     [potemkin "0.4.3"]]
   :repl-options {:init-ns jiface.dev}
@@ -37,7 +37,7 @@
     :test {
       :aot :all
       :dependencies [
-        [clojusc/trifl "0.1.0-SNAPSHOT"]]
+        [clojusc/trifl "0.2.0"]]
       :plugins [
         [lein-ancient "0.6.10"]
         [jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]

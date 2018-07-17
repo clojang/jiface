@@ -46,8 +46,6 @@
         [venantius/yagni "0.1.4"]]}
     :test {
       :aot :all
-      :dependencies [
-        [clojusc/trifl "0.2.0"]]
       :plugins [
         [lein-ltest "0.3.0"]]
       :source-paths ["test"]
@@ -58,6 +56,7 @@
         :integration :integration}}
     :dev {
       :dependencies [
+        [clojusc/trifl "0.3.0"]
         [org.clojure/math.numeric-tower "0.0.4"]
         [org.clojure/tools.namespace "0.2.10"]]
       :source-paths ["dev-resources/src"]

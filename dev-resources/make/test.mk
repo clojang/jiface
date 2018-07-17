@@ -1,14 +1,14 @@
 check:
-	@lein with-profile +test test :unit
+	@lein ltest :unit
 
 check-system:
-	@lein with-profile +test test :system
+	@lein ltest :system
 
 check-integration:
-	@lein with-profile +test test :integration
+	@lein ltest :integration
 
-check-deps:
-	@lein with-profile +lint do ancient check :all
+check-vers:
+	@lein check-vers
 
-check-all: check-deps
-	@lein with-profile +test test :all
+check-all: check-vers
+	@lein ltest :all

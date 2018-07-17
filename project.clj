@@ -30,7 +30,8 @@
       :aot :all}
     :docs {
       :aot :all
-      :dependencies [[clojang/codox-theme "0.1.0-SNAPSHOT"]]
+      :dependencies [
+        [clojang/codox-theme "0.2.0-SNAPSHOT"]]
       :plugins [
         [lein-codox "0.10.4"]
         [lein-simpleton "1.3.0"]]}

@@ -17,7 +17,8 @@
     [jiface.otp.messaging :as messaging]
     [jiface.otp.nodes :as nodes]
     [jiface.otp.streams :as streams]
-    [jiface.util :as util])
+    [jiface.util :as util]
+    [trifl.java :refer [show-methods]])
   (:import
     (clojure.lang Keyword Reflector)
     (com.ericsson.otp.erlang)))

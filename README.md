@@ -53,6 +53,7 @@ The default (and tested) version combinations are as follows:
 
 | jiface | JInterface | Erlang Release | Erlang Version (erts) |
 |--------|------------|----------------|-----------------------|
+| 0.6.0  | 1.9        | 21.0           | 10                    |
 | 0.5.0  | 1.8.1      | 20.3           | 9.3                   |
 | 0.4.0  | 1.7.1      | 19.2, 19.3     | 8.2, 8.3              |
 | 0.3.0  | 1.7.1      | 19.2           | 8.2                   |

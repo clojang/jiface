@@ -11,7 +11,7 @@
     [org.clojure/clojure "1.9.0"]
     [org.clojure/core.match "0.3.0-alpha4"]
     [org.clojure/core.memoize "0.7.1"]
-    [clojang/erlang-jinterface "1.7.1"]
+    [clojang/erlang-jinterface "1.8.1"]
     [clojusc/twig "0.3.2"]
     [dire "0.5.4"]
     [potemkin "0.4.5"]]

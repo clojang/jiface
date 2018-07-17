@@ -3,7 +3,7 @@
 ROOT_DIR = $(shell pwd)
 DOCS_DIR = $(ROOT_DIR)/docs
 CURRENT = $(DOCS_DIR)/current
-ERL_DOCS_SRC = ~/Dropbox/Docs/Erlang/19.2
+ERL_DOCS_SRC = ~/Dropbox/Docs/Erlang/$(ERL_RELEASE_VERSION)
 ERL_DOCS_DIR = $(CURRENT)/erlang
 JAVA_DOCS_DIR = $(ERL_DOCS_DIR)/java
 REMOTE_DOCS_HOST = http://clojang.github.io/jiface/current/java

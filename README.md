@@ -17,6 +17,7 @@
 * [Usage](#usage-)
 * [Running Tests](#running-tests-)
 * [Erlang, Clojure, and JInterface](#erlang-clojure-and-jinterface-)
+* [Donating](#donating-)
 * [License](#license-)
 
 
@@ -236,6 +237,20 @@ If you are interested in building your own JInterface ``.jar`` file for use
 with a Clojure project, be sure fo check out the
 [jinterface-builder Clojang project](https://github.com/clojang/jinterface-builder).
 The project `README` has everything you need to get started.
+
+
+## Donating [&#x219F;](#contents)
+
+A donation account for supporting development on this project has been set up
+on Liberapay here:
+
+* [https://liberapay.com/clojang/donate](https://liberapay.com/clojang/donate)
+
+You can learn more about Liberapay on its [Wikipedia entry][libera-wiki] or on the
+service's ["About" page][libera-about].
+
+[libera-wiki]: https://en.wikipedia.org/wiki/Liberapay
+[libera-about]: https://liberapay.com/about/
 
 
 ## License [&#x219F;](#contents)

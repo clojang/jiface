@@ -13,9 +13,9 @@
   (is (= com.ericsson.otp.erlang.OtpNode
          (type (nodes/node "a" "cookie" 1234)))))
 
-(deftest ^:unit node-test
+(deftest ^:system node-test
   (let [my-name "mynode"
-        hostname (net/get-local-hostname)
+        hostname (net/get-short-local-hostname)
         my-fullhost (str my-name "@" hostname)
         my-node (nodes/node my-name)]
     (is (= my-fullhost (nodes/->str my-node)))

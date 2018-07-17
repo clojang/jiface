@@ -1,9 +1,9 @@
-(ns jiface.test.core-test
+(ns ^:unit jiface.test.core-test
   (:require [clojure.test :refer :all]
             [jiface.core :as jiface])
   (:import [com.ericsson.otp.erlang]))
 
-(deftest ^:unit name->class-name-test
+(deftest name->class-name-test
   (is (= "Atom" (jiface/name->class-name :atom)))
   (is (= "Boolean" (jiface/name->class-name :boolean)))
   (is (= "List" (jiface/name->class-name :list)))
@@ -14,7 +14,7 @@
   (is (= "UShort" (jiface/name->class-name :ushort)))
   (is (= "LocalNode" (jiface/name->class-name :local-node))))
 
-(deftest ^:unit name->class-name-test
+(deftest name->class-name-test
   (is (= 'com.ericsson.otp.erlang.OtpErlangAtom
          (jiface/name->class :erlang :atom)))
   (is (= 'com.ericsson.otp.erlang.OtpErlangBoolean
@@ -34,7 +34,7 @@
   (is (= 'com.ericsson.otp.erlang.OtpLocalNode
          (jiface/name->class :otp :local-node))))
 
-(deftest ^:unit dynamic-init
+(deftest dynamic-init
   (is (= (resolve 'com.ericsson.otp.erlang.OtpErlangAtom)
           (type (jiface/dynamic-init :erlang [:atom "a"]))))
   (is (= (resolve 'com.ericsson.otp.erlang.OtpNode)

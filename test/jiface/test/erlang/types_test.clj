@@ -1,4 +1,5 @@
-(ns jiface.test.erlang.types-test
+(ns ^:unit
+  jiface.test.erlang.types-test
   (:require [clojure.math.numeric-tower :as math]
             [clojure.test :refer :all]
             [jiface.erlang :as erlang]
@@ -15,11 +16,11 @@
            [java.lang Long]
            [java.math BigInteger]))
 
-(deftest ^:unit create-test
+(deftest create-test
   (is (= com.ericsson.otp.erlang.OtpErlangAtom
          (type (erlang/create :atom "a")))))
 
-(deftest ^:unit atom-constructor-test
+(deftest atom-constructor-test
   (is (= com.ericsson.otp.erlang.OtpErlangAtom
          (type (types/atom "a"))))
   (is (= com.ericsson.otp.erlang.OtpErlangAtom
@@ -27,7 +28,7 @@
   (is (= com.ericsson.otp.erlang.OtpErlangAtom
          (type (types/atom false)))))
 
-(deftest ^:unit atom-protocol-test
+(deftest atom-protocol-test
   (let [an-atom (types/atom "test-atom")
         same-atom (types/atom "test-atom")
         another-atom (types/atom "another-atom")
@@ -52,13 +53,13 @@
     (is (= false (atom-type/get-boolean-value false-1)))
     (is (= false (atom-type/get-boolean-value false-2)))))
 
-(deftest ^:unit boolean-constructor-test
+(deftest boolean-constructor-test
   (is (= com.ericsson.otp.erlang.OtpErlangBoolean
          (type (types/boolean true))))
   (is (= com.ericsson.otp.erlang.OtpErlangBoolean
          (type (types/boolean false)))))
 
-(deftest ^:unit boolean-protocol-test
+(deftest boolean-protocol-test
   (let [true-bool (types/boolean true)
         false-bool (types/boolean false)]
     (is (= "true" (boolean-type/get-atom-value true-bool)))
@@ -66,11 +67,11 @@
     (is (= true (boolean-type/get-boolean-value true-bool)))
     (is (= false (boolean-type/get-boolean-value false-bool)))))
 
-(deftest ^:unit char-constructor-test
+(deftest char-constructor-test
   (is (= com.ericsson.otp.erlang.OtpErlangChar
          (type (types/char \A)))))
 
-(deftest ^:unit char-protocol-test
+(deftest char-protocol-test
   (let [a-char (types/char \A)
         same-char (types/char \A)
         another-char (types/char \B)]
@@ -81,7 +82,7 @@
     (is (= 65 (char-type/hash a-char)))
     (is (= 66 (char-type/hash another-char)))))
 
-(deftest ^:unit tuple-protocol-test
+(deftest tuple-protocol-test
   (let [tuple-1 (types/tuple (into-array [(types/atom "a")]))
         tuple-2 (types/tuple (into-array [(types/atom "a") (types/atom "b")]))
         same-tuple (types/tuple (into-array [(types/atom "a") (types/atom "b")]))]
@@ -100,7 +101,7 @@
     (is (= 1 (count (tuple-type/get-elements tuple-1))))
     (is (= 2 (count (tuple-type/get-elements tuple-2))))))
 
-(deftest ^:unit list-protocol-test
+(deftest list-protocol-test
   (let [list-1 (types/list (into-array [(types/atom "a")]))
         list-2 (types/list (into-array [(types/atom "a") (types/atom "b")]))
         same-list (types/list (into-array [(types/atom "a") (types/atom "b")]))]
@@ -119,7 +120,7 @@
     (is (= 1 (count (list-type/get-elements list-1))))
     (is (= 2 (count (list-type/get-elements list-2))))))
 
-(deftest ^:unit long-protocol-test
+(deftest long-protocol-test
   (let [long-1 (types/long (* -1 java.lang.Long/MAX_VALUE))
         long-2 (types/long java.lang.Long/MAX_VALUE)
         same-long (types/long java.lang.Long/MAX_VALUE)
@@ -144,7 +145,7 @@
     (is (= 2147483647 (long-type/get-uint-value int-long)))
     (is (= 32767 (long-type/get-ushort-value short-long)))))
 
-(deftest ^:unit map-protocol-test
+(deftest map-protocol-test
   (let [keys-1 (into-array [(types/atom "a") (types/atom "b")])
         vals-1 (into-array [(types/int 1) (types/int 2)])
         map-1 (types/map keys-1 vals-1)

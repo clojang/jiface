@@ -26,7 +26,7 @@
                  jiface.util]
     :metadata {:doc/format :markdown}}
   :profiles {
-    :uberjar {
+    :ubercompile {
       :aot :all}
     :docs {
       :aot :all
@@ -34,16 +34,21 @@
       :plugins [
         [lein-codox "0.10.3"]
         [lein-simpleton "1.3.0"]]}
+    :lint {
+      :source-paths ^:replace ["src"]
+      :test-paths ^:replace []
+      :plugins [
+        [jonase/eastwood "0.2.5"]
+        [lein-ancient "0.6.15"]
+        [lein-bikeshed "0.5.1"]
+        [lein-kibit "0.1.6"]
+        [venantius/yagni "0.1.4"]]}
     :test {
       :aot :all
       :dependencies [
         [clojusc/trifl "0.2.0"]]
       :plugins [
-        [lein-ancient "0.6.10"]
-        [jonase/eastwood "0.2.3" :exclusions [org.clojure/clojure]]
-        [lein-bikeshed "0.4.1"]
-        [lein-kibit "0.1.5" :exclusions [org.clojure/clojure]]
-        [venantius/yagni "0.1.4"]]
+        [lein-ltest "0.3.0"]]
       :source-paths ["test"]
       :test-selectors {
         :default :unit
@@ -55,4 +60,26 @@
         [org.clojure/math.numeric-tower "0.0.4"]
         [org.clojure/tools.namespace "0.2.10"]]
       :source-paths ["dev-resources/src"]
-      :aot [clojure.tools.logging.impl]}})
+      :aot [clojure.tools.logging.impl]}}
+  :aliases {
+    ;; Dev Aliases
+    "repl" ["do"
+      ["clean"]
+      ["repl"]]
+    "ubercompile" ["do"
+      ["clean"]
+      ["with-profile" "+ubercompile" "compile"]]
+    "check-vers" ["with-profile" "+lint" "ancient" "check" ":all"]
+    "check-jars" ["with-profile" "+lint" "do"
+      ["deps" ":tree"]
+      ["deps" ":plugin-tree"]]
+    "check-deps" ["do"
+      ["check-jars"]
+      ["check-vers"]]
+    "kibit" ["with-profile" "+lint" "kibit"]
+    "eastwood" ["with-profile" "+lint" "eastwood" "{:namespaces [:source-paths]}"]
+    "lint" ["do"
+      ["kibit"]
+      ;["eastwood"]
+      ]
+    "ltest" ["with-profile" "+test" "ltest"]})

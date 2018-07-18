@@ -6,7 +6,6 @@
     [clojure.core.match :refer [match]]
     [clojure.tools.logging :as log]
     [clojure.tools.namespace.repl :as repl]
-    [clojusc.twig :as twig]
     [dire.core :refer [with-handler! with-finally!]]
     [jiface.core :as jiface]
     [jiface.erlang :as erlang]

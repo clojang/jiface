@@ -1,7 +1,6 @@
 (ns jiface.core
   (:require [clojure.string :as string]
             [clojure.tools.logging :as log]
-            [clojusc.twig :as twig]
             [dire.core :refer [with-handler!]])
   (:import [clojure.lang Keyword Reflector]
            [com.ericsson.otp.erlang]))

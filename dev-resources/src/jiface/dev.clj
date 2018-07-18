@@ -4,7 +4,6 @@
   when running `lein repl` from the Clojang project directory."
   (:require
     [clojure.core.match :refer [match]]
-    [clojure.tools.logging :as log]
     [clojure.tools.namespace.repl :as repl]
     [dire.core :refer [with-handler! with-finally!]]
     [jiface.core :as jiface]

@@ -1,9 +1,10 @@
 (ns jiface.core
-  (:require [clojure.string :as string]
-            [clojure.tools.logging :as log]
-            [dire.core :refer [with-handler!]])
-  (:import [clojure.lang Keyword Reflector]
-           [com.ericsson.otp.erlang]))
+  (:require
+    [clojure.string :as string]
+    [dire.core :refer [with-handler!]])
+  (:import
+    (clojure.lang Keyword Reflector)
+    (com.ericsson.otp.erlang)))
 
 (defn name->class-name
   "A helper function for use when creating Erlang class wrappers."

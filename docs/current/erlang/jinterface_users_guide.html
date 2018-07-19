@@ -48,12 +48,12 @@
 <div class="erlang-logo-wrapper"><a href="../index.html"><img alt="Erlang Logo" src="../erlang-logo.png" class="erlang-logo"></a></div>
 <p class="section-title">jinterface</p>
 <p class="section-subtitle">User's Guide</p>
-<p class="section-version">Version 1.8.1</p>
+<p class="section-version">Version 1.9</p>
 <ul class="panel-sections">
 <li><a href="users_guide.html">User's Guide</a></li>
 <li><a href="index.html">Reference Manual</a></li>
 <li><a href="release_notes.html">Release Notes</a></li>
-<li><a href="../pdf/jinterface-1.8.1.pdf">PDF</a></li>
+<li><a href="../pdf/jinterface-1.9.pdf">PDF</a></li>
 <li><a href="../index.html">Top</a></li>
 </ul>
 <ul class="expand-collapse-items">
@@ -65,19 +65,19 @@
 <li><a href="jinterface_users_guide.html">
               Top of chapter
             </a></li>
-<li title="Mapping of Basic Erlang Types to Java"><a href="jinterface_users_guide.html#id62841">Mapping of Basic Erlang Types to Java</a></li>
-<li title="Special Mapping Issues"><a href="jinterface_users_guide.html#id62764">Special Mapping Issues</a></li>
-<li title="Nodes"><a href="jinterface_users_guide.html#id62799">Nodes</a></li>
-<li title="Mailboxes"><a href="jinterface_users_guide.html#id61144">Mailboxes</a></li>
-<li title="Connections"><a href="jinterface_users_guide.html#id62892">Connections</a></li>
-<li title="Transport Factory"><a href="jinterface_users_guide.html#id62940">Transport Factory</a></li>
-<li title="Sending and Receiving Messages"><a href="jinterface_users_guide.html#id58215">Sending and Receiving Messages</a></li>
-<li title="Sending Arbitrary Data"><a href="jinterface_users_guide.html#id58297">Sending Arbitrary Data</a></li>
-<li title="Linking to Remote Processes"><a href="jinterface_users_guide.html#id63378">Linking to Remote Processes</a></li>
-<li title="Using EPMD"><a href="jinterface_users_guide.html#id63443">Using EPMD</a></li>
-<li title="Remote Procedure Calls"><a href="jinterface_users_guide.html#id58082">Remote Procedure Calls</a></li>
-<li title="Compiling and Loading Your Code"><a href="jinterface_users_guide.html#id58123">Compiling and Loading Your Code</a></li>
-<li title="Tracing"><a href="jinterface_users_guide.html#id62262">Tracing</a></li>
+<li title="Mapping of Basic Erlang Types to Java"><a href="jinterface_users_guide.html#mapping-of-basic-erlang-types-to-java">Mapping of Basic Erlang Types to Java</a></li>
+<li title="Special Mapping Issues"><a href="jinterface_users_guide.html#special-mapping-issues">Special Mapping Issues</a></li>
+<li title="Nodes"><a href="jinterface_users_guide.html#nodes">Nodes</a></li>
+<li title="Mailboxes"><a href="jinterface_users_guide.html#mailboxes">Mailboxes</a></li>
+<li title="Connections"><a href="jinterface_users_guide.html#connections">Connections</a></li>
+<li title="Transport Factory"><a href="jinterface_users_guide.html#transport-factory">Transport Factory</a></li>
+<li title="Sending and Receiving Messages"><a href="jinterface_users_guide.html#sending-and-receiving-messages">Sending and Receiving Messages</a></li>
+<li title="Sending Arbitrary Data"><a href="jinterface_users_guide.html#sending-arbitrary-data">Sending Arbitrary Data</a></li>
+<li title="Linking to Remote Processes"><a href="jinterface_users_guide.html#linking-to-remote-processes">Linking to Remote Processes</a></li>
+<li title="Using EPMD"><a href="jinterface_users_guide.html#using-epmd">Using EPMD</a></li>
+<li title="Remote Procedure Calls"><a href="jinterface_users_guide.html#remote-procedure-calls">Remote Procedure Calls</a></li>
+<li title="Compiling and Loading Your Code"><a href="jinterface_users_guide.html#compiling-and-loading-your-code">Compiling and Loading Your Code</a></li>
+<li title="Tracing"><a href="jinterface_users_guide.html#tracing">Tracing</a></li>
 </ul>
 </li></ul>
 </div></div>
@@ -121,8 +121,8 @@
     <li>tracing message flow</li>
   </ul>
 
-  <h3><a name="id62841">1.1 
-        Mapping of Basic Erlang Types to Java</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-mapping-of-basic-erlang-types-to-java-id63133').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-mapping-of-basic-erlang-types-to-java-id63133').style.visibility = 'hidden';"><span id="ghlink-mapping-of-basic-erlang-types-to-java-id63133" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L71" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="mapping-of-basic-erlang-types-to-java" href="#mapping-of-basic-erlang-types-to-java">1.1 
+          Mapping of Basic Erlang Types to Java</a></span></h3>
 
     <p>This section describes the mapping of Erlang basic types to Java. </p>
     <div class="doc-table-wrapper">
@@ -184,8 +184,8 @@
 </div>
 
 
-  <h3><a name="id62764">1.2 
-        Special Mapping Issues</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-special-mapping-issues-id58998').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-special-mapping-issues-id58998').style.visibility = 'hidden';"><span id="ghlink-special-mapping-issues-id58998" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L127" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="special-mapping-issues" href="#special-mapping-issues">1.2 
+          Special Mapping Issues</a></span></h3>
 
     <p>The atoms <span class="code">true</span> and <span class="code">false</span> are special atoms, used as boolean values.
       The class <span class="bold_code bc-19"><a href="java/com/ericsson/otp/erlang/OtpErlangBoolean.html">OtpErlangBoolean</a></span> can be used to represent these.</p>
@@ -194,8 +194,8 @@
       is provided to represent Erlang strings.</p>
 
 
-  <h3><a name="id62799">1.3 
-        Nodes</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-nodes-id63482').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-nodes-id63482').style.visibility = 'hidden';"><span id="ghlink-nodes-id63482" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L136" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="nodes" href="#nodes">1.3 
+          Nodes</a></span></h3>
 
     <p>A node as defined by Erlang/OTP is an instance of the Erlang Runtime
       System, a virtual machine roughly equivalent to a JVM. Each node has a
@@ -214,8 +214,8 @@
     <div class="example"><pre>OtpNode node = new OtpNode("gurka");    </pre></div>
 
 
-  <h3><a name="id61144">1.4 
-        Mailboxes</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-mailboxes-id63520').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-mailboxes-id63520').style.visibility = 'hidden';"><span id="ghlink-mailboxes-id63520" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L156" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="mailboxes" href="#mailboxes">1.4 
+          Mailboxes</a></span></h3>
 
     <p>Erlang processes running on an Erlang node are identified by process
       identifiers (pids) and, optionally, by registered names unique within
@@ -249,8 +249,8 @@
       mailbox, which then can identify the sender pid.</p>
 
 
-  <h3><a name="id62892">1.5 
-        Connections</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-connections-id63627').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-connections-id63627').style.visibility = 'hidden';"><span id="ghlink-connections-id63627" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L193" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="connections" href="#connections">1.5 
+          Connections</a></span></h3>
 
     <p>It is not necessary to explicitly set up communication with a remote
       node. Simply sending a message to a mailbox on that node will cause
@@ -282,8 +282,8 @@
       a connection may be broken however.</p>
 
 
-  <h3><a name="id62940">1.6 
-        Transport Factory</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-transport-factory-id63167').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-transport-factory-id63167').style.visibility = 'hidden';"><span id="ghlink-transport-factory-id63167" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L226" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="transport-factory" href="#transport-factory">1.6 
+          Transport Factory</a></span></h3>
 
     <p>All necessary connections are made using methods of
     <span class="bold_code bc-19"><a href="java/com/ericsson/otp/erlang/OtpTransportFactory.html">OtpTransportFactory</a></span>
@@ -291,8 +291,8 @@
     User may provide custom transport factory as needed. See java doc for details.</p>
 
 
-  <h3><a name="id58215">1.7 
-        Sending and Receiving Messages</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-sending-and-receiving-messages-id63189').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-sending-and-receiving-messages-id63189').style.visibility = 'hidden';"><span id="ghlink-sending-and-receiving-messages-id63189" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L234" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="sending-and-receiving-messages" href="#sending-and-receiving-messages">1.7 
+          Sending and Receiving Messages</a></span></h3>
 
     <p>Messages sent with this package must be instances of
       <span class="bold_code bc-19"><a href="java/com/ericsson/otp/erlang/OtpErlangObject.html">OtpErlangObject</a></span>
@@ -342,8 +342,8 @@
       number of nodes (such as one) on each JVM.</p>
 
 
-  <h3><a name="id58297">1.8 
-        Sending Arbitrary Data</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-sending-arbitrary-data-id58937').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-sending-arbitrary-data-id58937').style.visibility = 'hidden';"><span id="ghlink-sending-arbitrary-data-id58937" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L288" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="sending-arbitrary-data" href="#sending-arbitrary-data">1.8 
+          Sending Arbitrary Data</a></span></h3>
 
     <p>This package was originally intended to be used for communicating
       between Java and Erlang, and for that reason the send and receive
@@ -369,8 +369,8 @@
         }    </pre></div>
 
 
-  <h3><a name="id63378">1.9 
-        Linking to Remote Processes</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-linking-to-remote-processes-id63740').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-linking-to-remote-processes-id63740').style.visibility = 'hidden';"><span id="ghlink-linking-to-remote-processes-id63740" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L316" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="linking-to-remote-processes" href="#linking-to-remote-processes">1.9 
+          Linking to Remote Processes</a></span></h3>
 
     <p>Erlang defines a concept known as linked processes. A link is an
       implicit connection between two processes that causes an exception to
@@ -408,8 +408,8 @@
       </p>
 
 
-  <h3><a name="id63443">1.10 
-        Using EPMD</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-using-epmd-id64172').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-using-epmd-id64172').style.visibility = 'hidden';"><span id="ghlink-using-epmd-id64172" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L357" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="using-epmd" href="#using-epmd">1.10 
+          Using EPMD</a></span></h3>
 
     <p>Epmd is the Erlang Port Mapper Daemon. Distributed Erlang nodes
       register with epmd on the localhost to indicate to other nodes that
@@ -441,8 +441,8 @@
       local end of the connection to close, so resources may be consumed.</p>
 
 
-  <h3><a name="id58082">1.11 
-        Remote Procedure Calls</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-remote-procedure-calls-id64246').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-remote-procedure-calls-id64246').style.visibility = 'hidden';"><span id="ghlink-remote-procedure-calls-id64246" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L389" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="remote-procedure-calls" href="#remote-procedure-calls">1.11 
+          Remote Procedure Calls</a></span></h3>
 
     <p>An Erlang node acting as a client to another Erlang node
       typically sends a request and waits for a reply. Such a request is
@@ -462,8 +462,8 @@ OtpErlangObject received = connection.receiveRPC(); </pre></div>
       from a remote host. </p>
 
 
-  <h3><a name="id58123">1.12 
-        Compiling and Loading Your Code</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-compiling-and-loading-your-code-id64290').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-compiling-and-loading-your-code-id64290').style.visibility = 'hidden';"><span id="ghlink-compiling-and-loading-your-code-id64290" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L412" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="compiling-and-loading-your-code" href="#compiling-and-loading-your-code">1.12 
+          Compiling and Loading Your Code</a></span></h3>
 
     <p>In order to use any of the <span class="bold_code bc-19"><a href="java/com/ericsson/otp/erlang/package-summary.html">Jinterface</a></span>
       classes, include the following line in your code:</p>
@@ -488,8 +488,8 @@ OtpErlangObject received = connection.receiveRPC(); </pre></div>
     <div class="example"><pre>$ java ".:/usr/local/otp/lib/jinterface-1.2/priv/OtpErlang.jar" myclass    </pre></div>
 
 
-  <h3><a name="id62262">1.13 
-        Tracing</a></h3>
+  <h3><span onMouseOver="document.getElementById('ghlink-tracing-id59277').style.visibility = 'visible';" onMouseOut="document.getElementById('ghlink-tracing-id59277').style.visibility = 'hidden';"><span id="ghlink-tracing-id59277" class="ghlink"><a href="https://github.com/erlang/otp/edit/maint/lib/jinterface/doc/src/jinterface_users_guide.xml#L441" title="Found an issue with the documentation? Fix it by clicking here!"><span class="pencil"></span></a></span><a class="title_link" name="tracing" href="#tracing">1.13 
+          Tracing</a></span></h3>
 
     <p>Communication between nodes can be traced by setting a system property
       before the communication classes in this package are initialized.

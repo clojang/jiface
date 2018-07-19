@@ -1,4 +1,20 @@
-(defproject clojang/jiface "0.6.0"
+(defn get-banner
+  []
+  (try
+    (str
+      (slurp "resources/text/banner.txt")
+      ;(slurp "resources/text/loading.txt")
+      )
+    ;; If another project can't find the banner, just skip it.
+    (catch Exception _ "")))
+
+(defn get-prompt
+  [ns]
+  (str "\u001B[35m[\u001B[34m"
+       ns
+       "\u001B[35m]\u001B[33m λ\u001B[m=> "))
+
+(defproject clojang/jiface "0.7.0-SNAPSHOT"
   :description "A Clojure-idiomatic wrapper around Erlang's JInterface"
   :url "https://github.com/clojang/jiface"
   :scm {

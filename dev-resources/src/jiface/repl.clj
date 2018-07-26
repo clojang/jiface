@@ -1,4 +1,4 @@
-(ns jiface.dev
+(ns jiface.repl
   "A development namespace that imports other useful namespaces for easy
   prototyping, &c. The intended use is for this to be the initial namespace
   when running `lein repl` from the Clojang project directory."

@@ -75,7 +75,10 @@
         [org.clojure/math.numeric-tower "0.0.4"]
         [org.clojure/tools.namespace "0.2.10"]]
       :source-paths ["dev-resources/src"]
-      :aot [clojure.tools.logging.impl]}}
+      :repl-options {
+        :init-ns jiface.repl
+        :prompt ~get-prompt
+        :init ~(println (get-banner))}}}
   :aliases {
     ;; Dev Aliases
     "repl" ["do"

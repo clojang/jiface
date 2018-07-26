@@ -1,10 +1,10 @@
 (ns jiface.exceptions
-  (:require [jiface.erlang :as erlang]
-            [jiface.util :as util])
-  (:import [clojure.lang Keyword Reflector]
-           [com.ericsson.otp.erlang
-             OtpErlangExit
-             OtpErlangPid]))
+  (:require
+    [jiface.erlang :as erlang]
+    [jiface.util :as util])
+  (:import
+    (clojure.lang Keyword Reflector)
+    (com.ericsson.otp.erlang OtpErlangExit OtpErlangPid)))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;; Exception constructors

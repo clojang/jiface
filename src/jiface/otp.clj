@@ -1,6 +1,8 @@
 (ns jiface.otp
-  (:require [jiface.core :as jiface])
-  (:import [clojure.lang Keyword]))
+  (:require
+    [jiface.core :as jiface])
+  (:import
+    (clojure.lang Keyword)))
 
 (defn create [& args]
   "Common function for node instantiation.

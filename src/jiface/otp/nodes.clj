@@ -1,16 +1,18 @@
 (ns jiface.otp.nodes
-  (:require [clojure.core.memoize :as memo]
-            [jiface.otp :as otp]
-            [jiface.util :as util])
-  (:import [com.ericsson.otp.erlang
-            AbstractNode
-            OtpErlangObject
-            OtpLocalNode
-            OtpNode
-            OtpNodeStatus
-            OtpMbox
-            OtpPeer
-            OtpSelf]))
+  (:require
+    [clojure.core.memoize :as memo]
+    [jiface.otp :as otp]
+    [jiface.util :as util])
+  (:import
+    (com.ericsson.otp.erlang AbstractNode
+                             OtpErlangObject
+                             OtpLocalNode
+                             OtpNode
+                             OtpNodeStatus
+                             OtpMbox
+                             OtpPeer
+                             OtpSelf))
+  (:refer-clojure :exclude [node]))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;; OTP constructors
@@ -322,9 +324,7 @@
   The results of this function are memoized as the intent is to obtain a
   singleton instance of the default node. (The Erlang JInterface docs
   recommend that only one node be run per JVM instance.)"
-  (memo/lru
-    (fn [^String node-name]
-      (node node-name))))
+  (memo/lru node))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;; Error handling

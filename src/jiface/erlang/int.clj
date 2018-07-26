@@ -1,15 +1,16 @@
 (ns jiface.erlang.int
-  (:require [potemkin :refer [import-vars]]
-            [jiface.erlang.object :as object]
-            [jiface.util :as util])
-  (:import [com.ericsson.otp.erlang
-             OtpErlangByte
-             OtpErlangChar
-             OtpErlangInt
-             OtpErlangLong
-             OtpErlangShort
-             OtpErlangUInt
-             OtpErlangUShort])
+  (:require
+    [jiface.erlang.object :as object]
+    [jiface.util :as util]
+    [potemkin :refer [import-vars]])
+  (:import
+    (com.ericsson.otp.erlang OtpErlangByte
+                             OtpErlangChar
+                             OtpErlangInt
+                             OtpErlangLong
+                             OtpErlangShort
+                             OtpErlangUInt
+                             OtpErlangUShort))
   (:refer-clojure :exclude [hash]))
 
 (defprotocol ErlangInt

@@ -1,10 +1,10 @@
 (ns jiface.erlang.list
-  (:require [potemkin :refer [import-vars]]
-            [jiface.erlang.object :as object]
-            [jiface.util :as util])
-  (:import [com.ericsson.otp.erlang
-             OtpErlangList
-             OtpErlangList$SubList])
+  (:require
+    [jiface.erlang.object :as object]
+    [jiface.util :as util]
+    [potemkin :refer [import-vars]])
+  (:import
+    (com.ericsson.otp.erlang OtpErlangList OtpErlangList$SubList))
   (:refer-clojure :exclude [hash]))
 
 (defprotocol ErlangList

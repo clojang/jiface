@@ -1,6 +1,7 @@
 (ns jiface.erlang.ref
-  (:require [potemkin :refer [import-vars]]
-            [jiface.erlang.object :as object])
+  (:require
+    [jiface.erlang.object :as object]
+    [potemkin :refer [import-vars]])
   (:import [com.ericsson.otp.erlang OtpErlangRef])
   (:refer-clojure :exclude [get hash keys remove]))
 

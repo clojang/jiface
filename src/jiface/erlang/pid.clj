@@ -1,7 +1,9 @@
 (ns jiface.erlang.pid
-  (:require [potemkin :refer [import-vars]]
-            [jiface.erlang.object :as object])
-  (:import [com.ericsson.otp.erlang OtpErlangPid])
+  (:require
+    [jiface.erlang.object :as object]
+    [potemkin :refer [import-vars]])
+  (:import
+    (com.ericsson.otp.erlang OtpErlangPid))
   (:refer-clojure :exclude [get hash keys remove]))
 
 (defprotocol ErlangPid

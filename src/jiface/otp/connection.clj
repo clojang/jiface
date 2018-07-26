@@ -1,12 +1,13 @@
 (ns jiface.otp.connection
-  (:require [jiface.otp :as otp])
-  (:import [com.ericsson.otp.erlang
-            AbstractConnection
-            OtpConnection
-            OtpCookedConnection
-            OtpErlangObject
-            OtpErlangPid
-            OtpOutputStream])
+  (:require
+    [jiface.otp :as otp])
+  (:import
+    (com.ericsson.otp.erlang AbstractConnection
+                             OtpConnection
+                             OtpCookedConnection
+                             OtpErlangObject
+                             OtpErlangPid
+                             OtpOutputStream))
   (:refer-clojure :exclude [deliver send]))
 
 (defprotocol AbstractConnectionObject

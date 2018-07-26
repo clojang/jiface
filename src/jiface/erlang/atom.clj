@@ -1,9 +1,9 @@
 (ns jiface.erlang.atom
-  (:require [potemkin :refer [import-vars]]
-            [jiface.erlang.object :as object])
-  (:import [com.ericsson.otp.erlang
-            OtpErlangAtom
-            OtpErlangBoolean])
+  (:require
+    [jiface.erlang.object :as object]
+    [potemkin :refer [import-vars]])
+  (:import
+    (com.ericsson.otp.erlang OtpErlangAtom OtpErlangBoolean))
   (:refer-clojure :exclude [hash]))
 
 (defprotocol ErlangAtom

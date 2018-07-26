@@ -1,10 +1,10 @@
 (ns jiface.erlang.float
-  (:require [potemkin :refer [import-vars]]
-            [jiface.erlang.object :as object]
-            [jiface.util :as util])
-  (:import [com.ericsson.otp.erlang
-             OtpErlangDouble
-             OtpErlangFloat])
+  (:require
+    [jiface.erlang.object :as object]
+    [jiface.util :as util]
+    [potemkin :refer [import-vars]])
+  (:import
+    (com.ericsson.otp.erlang OtpErlangDouble OtpErlangFloat))
   (:refer-clojure :exclude [hash]))
 
 (defprotocol ErlangDouble

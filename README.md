@@ -64,6 +64,11 @@ The default (and tested) version combinations are as follows:
 While other version combination may work (and existing versions may be updated
 to work with different onces), those are the only ones which are supported.
 
+Versions notes:
+
+* The `lein` dep for the jiface 0.6.1 release is `[clojang/jiface "0.6.1-1"]`
+* The `lein` dep for the JInterface 1.9.1 release is
+  `[clojang/erlang-jinterface "1.9.1-3"]`
 
 ## Building [&#x219F;](#contents)
 

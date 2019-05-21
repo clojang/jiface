@@ -1,4 +1,4 @@
-(defproject clojang/jiface "0.6.1"
+(defproject clojang/jiface "0.6.1-1"
   :description "A Clojure-idiomatic wrapper around Erlang's JInterface"
   :url "https://github.com/clojang/jiface"
   :scm {
@@ -11,7 +11,7 @@
     [org.clojure/clojure "1.10.0"]
     [org.clojure/core.match "0.3.0"]
     [org.clojure/core.memoize "0.7.1"]
-    [clojang/erlang-jinterface "1.9.1"]
+    [clojang/erlang-jinterface "1.9.1-3"]
     [dire "0.5.4"]
     [potemkin "0.4.5"]]
   :repl-options {:init-ns jiface.dev}

@@ -1,31 +1,35 @@
 (ns ^:unit
   jiface.test.erlang.types-test
-  (:require [clojure.math.numeric-tower :as math]
-            [clojure.test :refer :all]
-            [jiface.erlang :as erlang]
-            [jiface.erlang.types :as types]
-            [jiface.erlang.atom :as atom-type]
-            [jiface.erlang.atom :as boolean-type]
-            [jiface.erlang.map :as map-type]
-            [jiface.erlang.tuple :as tuple-type]
-            [jiface.erlang.list :as list-type]
-            [jiface.erlang.int :as char-type]
-            [jiface.erlang.int :as long-type]
-            [jiface.erlang.string :as string-type])
-  (:import [com.ericsson.otp.erlang]
-           [java.lang Long]
-           [java.math BigInteger]))
+  (:require
+    [clojure.math.numeric-tower :as math]
+    [clojure.test :refer :all]
+    [jiface.erlang :as erlang]
+    [jiface.erlang.types :as types]
+    [jiface.erlang.atom :as atom-type]
+    [jiface.erlang.atom :as boolean-type]
+    [jiface.erlang.map :as map-type]
+    [jiface.erlang.tuple :as tuple-type]
+    [jiface.erlang.list :as list-type]
+    [jiface.erlang.int :as char-type]
+    [jiface.erlang.int :as long-type]
+    [jiface.erlang.string :as string-type])
+  (:import
+    (com.ericsson.otp.erlang OtpErlangAtom
+                             OtpErlangBoolean
+                             OtpErlangChar)
+    (java.lang Long)
+    (java.math BigInteger)))
 
 (deftest create-test
-  (is (= com.ericsson.otp.erlang.OtpErlangAtom
+  (is (= OtpErlangAtom
          (type (erlang/create :atom "a")))))
 
 (deftest atom-constructor-test
-  (is (= com.ericsson.otp.erlang.OtpErlangAtom
+  (is (= OtpErlangAtom
          (type (types/atom "a"))))
-  (is (= com.ericsson.otp.erlang.OtpErlangAtom
+  (is (= OtpErlangAtom
          (type (types/atom true))))
-  (is (= com.ericsson.otp.erlang.OtpErlangAtom
+  (is (= OtpErlangAtom
          (type (types/atom false)))))
 
 (deftest atom-protocol-test
@@ -54,9 +58,9 @@
     (is (= false (atom-type/get-boolean-value false-2)))))
 
 (deftest boolean-constructor-test
-  (is (= com.ericsson.otp.erlang.OtpErlangBoolean
+  (is (= OtpErlangBoolean
          (type (types/boolean true))))
-  (is (= com.ericsson.otp.erlang.OtpErlangBoolean
+  (is (= OtpErlangBoolean
          (type (types/boolean false)))))
 
 (deftest boolean-protocol-test
@@ -68,7 +72,7 @@
     (is (= false (boolean-type/get-boolean-value false-bool)))))
 
 (deftest char-constructor-test
-  (is (= com.ericsson.otp.erlang.OtpErlangChar
+  (is (= OtpErlangChar
          (type (types/char \A)))))
 
 (deftest char-protocol-test

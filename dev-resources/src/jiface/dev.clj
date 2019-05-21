@@ -18,7 +18,6 @@
     [jiface.util :as util]
     [trifl.java :refer [show-methods]])
   (:import
-    (clojure.lang Keyword Reflector)
-    (com.ericsson.otp.erlang)))
+    (clojure.lang Keyword Reflector)))
 
 (def reload #'repl/refresh)

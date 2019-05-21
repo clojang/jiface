@@ -1,16 +1,18 @@
 (ns jiface.test.otp.nodes-test
-  (:require [clojure.test :refer :all]
-            [jiface.otp.nodes :as nodes]
-            [jiface.util :as util]
-            [trifl.net :as net])
-  (:import [com.ericsson.otp.erlang]))
+  (:require
+    [clojure.test :refer :all]
+    [jiface.otp.nodes :as nodes]
+    [jiface.util :as util]
+    [trifl.net :as net])
+  (:import
+    (com.ericsson.otp.erlang OtpNode OtpPeer)))
 
 (deftest ^:unit node-constructor-test
-  (is (= com.ericsson.otp.erlang.OtpNode
+  (is (= OtpNode
          (type (nodes/node "a"))))
-  (is (= com.ericsson.otp.erlang.OtpNode
+  (is (= OtpNode
          (type (nodes/node "a" "cookie"))))
-  (is (= com.ericsson.otp.erlang.OtpNode
+  (is (= OtpNode
          (type (nodes/node "a" "cookie" 1234)))))
 
 (deftest ^:system node-test
@@ -29,5 +31,5 @@
     ))
 
 (deftest ^:unit peer-constructor-test
-  (is (= com.ericsson.otp.erlang.OtpPeer
+  (is (= OtpPeer
          (type (nodes/peer "a")))))

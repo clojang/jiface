@@ -4,7 +4,16 @@
     [dire.core :refer [with-handler!]])
   (:import
     (clojure.lang Keyword Reflector)
-    (com.ericsson.otp.erlang)))
+    (com.ericsson.otp.erlang OtpErlangExternalFun
+                             OtpErlangList$SubList
+                             OtpErlangObject$Hash
+                             OtpErlangUInt
+                             OtpErlangUShort
+                             OtpInputStream
+                             OtpLocalNode
+                             OtpOutputStream
+                             OtpServerSocketTransport
+                             OtpSocketTransport)))
 
 (defn name->class-name
   "A helper function for use when creating Erlang class wrappers."

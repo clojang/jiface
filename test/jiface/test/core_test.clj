@@ -1,7 +1,9 @@
 (ns ^:unit jiface.test.core-test
-  (:require [clojure.test :refer :all]
-            [jiface.core :as jiface])
-  (:import [com.ericsson.otp.erlang]))
+  (:require
+    [clojure.test :refer :all]
+    [jiface.core :as jiface])
+  (:import
+    (com.ericsson.otp.erlang OtpErlangAtom OtpNode)))
 
 (deftest name->class-name-test
   (is (= "Atom" (jiface/name->class-name :atom)))

@@ -1,8 +1,9 @@
 (ns jiface.util
-  (:require [clojure.string :as string]
-            [dire.core :refer [with-handler!]])
-  (:import [clojure.lang Reflector]
-           [com.ericsson.otp.erlang]))
+  (:require
+    [clojure.string :as string]
+    [dire.core :refer [with-handler!]])
+  (:import
+    (clojure.lang Reflector)))
 
 (defn add-err-handler
   "A wrapper for generating a specific dire error handler."

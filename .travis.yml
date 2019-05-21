@@ -1,9 +1,10 @@
 language: clojure
 script:
 - epmd -daemon
-- lein ltest :all
+- lein test :all
 jdk:
 - oraclejdk8
+- oraclejdk11
 addons:
   apt:
     sources:

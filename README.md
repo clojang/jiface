@@ -53,6 +53,7 @@ The default (and tested) version combinations are as follows:
 
 | jiface | JInterface | Erlang Release | Erlang Version (erts) |
 |--------|------------|----------------|-----------------------|
+| 0.7.0  | 1.10       | 22.0           | 10.4                  |
 | 0.6.1  | 1.9.1      | 21.3           | 10.3                  |
 | 0.6.0  | 1.9        | 21.0           | 10                    |
 | 0.5.0  | 1.8.1      | 20.3           | 9.3                   |
@@ -69,6 +70,8 @@ Versions notes:
 * The `lein` dep for the jiface 0.6.1 release is `[clojang/jiface "0.6.1-1"]`
 * The `lein` dep for the JInterface 1.9.1 release is
   `[clojang/erlang-jinterface "1.9.1-3"]`
+* The `lein` dep for the JInterface 1.10 release is
+  `[clojang/erlang-jinterface "1.10-1"]`
 
 ## Building [&#x219F;](#contents)
 

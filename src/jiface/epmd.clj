@@ -1,9 +1,9 @@
 (ns jiface.epmd
-  (:import [com.ericsson.otp.erlang
-            AbstractNode
-            OtpEpmd
-            OtpLocalNode
-            OtpTransportFactory]))
+  (:import
+    (com.ericsson.otp.erlang AbstractNode
+                             OtpEpmd
+                             OtpLocalNode
+                             OtpTransportFactory)))
 
 (defprotocol EpmdObject
   "Provides methods for registering, unregistering and looking up nodes with

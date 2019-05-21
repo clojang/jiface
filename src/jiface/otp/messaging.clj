@@ -1,15 +1,16 @@
 (ns jiface.otp.messaging
-  (:require [clojure.core.memoize :as memo]
-            [jiface.otp :as otp]
-            [jiface.util :as util])
-  (:import [clojure.lang Keyword]
-           [com.ericsson.otp.erlang
-            OtpErlangObject
-            OtpErlangPid
-            OtpInputStream
-            OtpMbox
-            OtpMsg
-            OtpNode])
+  (:require
+    [clojure.core.memoize :as memo]
+    [jiface.otp :as otp]
+    [jiface.util :as util])
+  (:import
+    (clojure.lang Keyword)
+    (com.ericsson.otp.erlang OtpErlangObject
+                             OtpErlangPid
+                             OtpInputStream
+                             OtpMbox
+                             OtpMsg
+                             OtpNode))
   (:refer-clojure :exclude [hash send]))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

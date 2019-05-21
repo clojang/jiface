@@ -1,8 +1,10 @@
 (ns jiface.erlang.tuple
-  (:require [potemkin :refer [import-vars]]
-            [jiface.erlang.object :as object]
-            [jiface.util :as util])
-  (:import [com.ericsson.otp.erlang OtpErlangTuple])
+  (:require
+    [potemkin :refer [import-vars]]
+    [jiface.erlang.object :as object]
+    [jiface.util :as util])
+  (:import
+    (com.ericsson.otp.erlang OtpErlangTuple))
   (:refer-clojure :exclude [hash]))
 
 (defprotocol ErlangTuple

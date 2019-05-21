@@ -1,10 +1,11 @@
 (ns jiface.erlang.types
-  (:require [jiface.erlang :as erlang]
-            [jiface.util :as util])
-  (:import [com.ericsson.otp.erlang
-            OtpInputStream
-            OtpErlangObject
-            OtpErlangPid])
+  (:require
+    [jiface.erlang :as erlang]
+    [jiface.util :as util])
+  (:import
+    (com.ericsson.otp.erlang OtpInputStream
+                             OtpErlangObject
+                             OtpErlangPid))
   (:refer-clojure :exclude [atom boolean byte char double int list float long
                             map ref short]))
 

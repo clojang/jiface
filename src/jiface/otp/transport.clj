@@ -1,10 +1,11 @@
 (ns jiface.otp.transport
-  (:require [jiface.otp :as otp]
-            [jiface.util :as util])
-  (:import [com.ericsson.otp.erlang
-            OtpServerSocketTransport
-            OtpSocketTransport
-            OtpSocketTransportFactory]))
+  (:require
+    [jiface.otp :as otp]
+    [jiface.util :as util])
+  (:import
+    (com.ericsson.otp.erlang OtpServerSocketTransport
+                             OtpSocketTransport
+                             OtpSocketTransportFactory)))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;; OTP constructors

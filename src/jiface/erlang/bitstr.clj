@@ -1,10 +1,11 @@
 (ns jiface.erlang.bitstr
-  (:require [potemkin :refer [import-vars]]
-            [jiface.erlang.object :as object]
-            [jiface.util :as util])
-  (:import [com.ericsson.otp.erlang
-             OtpErlangBitstr
-             OtpErlangBinary])
+  (:require
+    [potemkin :refer [import-vars]]
+    [jiface.erlang.object :as object]
+    [jiface.util :as util])
+  (:import
+    (com.ericsson.otp.erlang OtpErlangBitstr
+                             OtpErlangBinary))
   (:refer-clojure :exclude [hash]))
 
 (defprotocol ErlangBitstr

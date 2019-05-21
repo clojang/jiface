@@ -8,8 +8,8 @@
     :name "Apache License, Version 2.0"
     :url "http://www.apache.org/licenses/LICENSE-2.0"}
   :dependencies [
-    [org.clojure/clojure "1.9.0"]
-    [org.clojure/core.match "0.3.0-alpha4"]
+    [org.clojure/clojure "1.10.0"]
+    [org.clojure/core.match "0.3.0"]
     [org.clojure/core.memoize "0.7.1"]
     [clojang/erlang-jinterface "1.9"]
     [dire "0.5.4"]
@@ -32,17 +32,16 @@
       :dependencies [
         [clojang/codox-theme "0.2.0-SNAPSHOT"]]
       :plugins [
-        [lein-codox "0.10.4"]
+        [lein-codox "0.10.78"]
         [lein-simpleton "1.3.0"]]}
     :lint {
       :source-paths ^:replace ["src"]
       :test-paths ^:replace []
       :plugins [
-        [jonase/eastwood "0.2.8"]
+        [jonase/eastwood "0.3.5"]
         [lein-ancient "0.6.15"]
-        [lein-bikeshed "0.5.1"]
-        [lein-kibit "0.1.6"]
-        [venantius/yagni "0.1.4"]]}
+        [lein-bikeshed "0.5.2"]
+        [lein-kibit "0.1.6"]]}
     :test {
       :aot :all
       :plugins [
@@ -55,7 +54,7 @@
         :integration :integration}}
     :dev {
       :dependencies [
-        [clojusc/trifl "0.3.0"]
+        [clojusc/trifl "0.4.2"]
         [org.clojure/math.numeric-tower "0.0.4"]
         [org.clojure/tools.namespace "0.2.10"]]
       :source-paths ["dev-resources/src"]
@@ -81,4 +80,4 @@
       ["kibit"]
       ;["eastwood"]
       ]
-    "ltest" ["with-profile" "+test" "ltest"]})
+    "test" ["with-profile" "+test" "ltest"]})

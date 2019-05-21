@@ -1,5 +1,6 @@
 (ns jiface.otp.streams
-  (:require [jiface.otp :as otp]))
+  (:require
+    [jiface.otp :as otp]))
 
 (defn input-stream
   "Constructor for `OtpInputStream`.

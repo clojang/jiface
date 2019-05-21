@@ -1,10 +1,10 @@
 (ns jiface.erlang.object
-  (:import [com.ericsson.otp.erlang
-             OtpErlangObject
-             OtpErlangExternalFun
-             OtpErlangFun
-             OtpInputStream
-             OtpOutputStream])
+  (:import
+    (com.ericsson.otp.erlang OtpErlangObject
+                             OtpErlangExternalFun
+                             OtpErlangFun
+                             OtpInputStream
+                             OtpOutputStream))
   (:refer-clojure :exclude [hash]))
 
 (defprotocol ErlangObject

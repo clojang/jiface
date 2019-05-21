@@ -1,16 +1,17 @@
 (ns jiface.otp.nodes
-  (:require [clojure.core.memoize :as memo]
-            [jiface.otp :as otp]
-            [jiface.util :as util])
-  (:import [com.ericsson.otp.erlang
-            AbstractNode
-            OtpErlangObject
-            OtpLocalNode
-            OtpNode
-            OtpNodeStatus
-            OtpMbox
-            OtpPeer
-            OtpSelf]))
+  (:require
+    [clojure.core.memoize :as memo]
+    [jiface.otp :as otp]
+    [jiface.util :as util])
+  (:import
+    (com.ericsson.otp.erlang AbstractNode
+                             OtpErlangObject
+                             OtpLocalNode
+                             OtpNode
+                             OtpNodeStatus
+                             OtpMbox
+                             OtpPeer
+                             OtpSelf)))
 
 ;;; >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;; OTP constructors

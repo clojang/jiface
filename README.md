@@ -40,7 +40,7 @@ For a comparison of JInterface, the low-level `jiface` API, and the high-level
 ## Changes [&#x219F;](#contents)
 
 For details on breaking changes made between jiface releases, see
-[the changes](http://clojang.github.io/jiface/current/80-changes.html) page.
+[jinterface-builder](https://github.com/clojang/jinterface-builder) project.
 
 
 ## Dependencies [&#x219F;](#contents)
